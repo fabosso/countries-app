@@ -56,11 +56,17 @@ const Description = (props) => {
     <>
       <div className={styles.header}>
         <h3>Where in the world?</h3>
-        <span onClick={handleClick}>☾ Dark Mode</span>
+        <span onClick={handleClick}>
+          <ion-icon name="moon-outline"></ion-icon>
+          &nbsp; Dark Mode
+        </span>
       </div>
       <div className={styles.container}>
         <button className={styles.backButton}>
-          <span>Back</span>
+          <span>
+            <ion-icon name="arrow-back-sharp"></ion-icon>
+            &nbsp; Back
+          </span>
         </button>
         <div className={styles.wrapper}>
           <img src={country.flag} alt={country.name} />
