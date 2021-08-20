@@ -17,6 +17,9 @@ export const getInfoByCode = async (code) => {
 };
 
 export const getNameByCode = async (code) => {
+  if (!(code.length === 2 || code.length === 3)) {
+    return null;
+  }
   const {
     data: { name },
   } = await get(`${API_URL}/alpha/${code}?fields=name`);

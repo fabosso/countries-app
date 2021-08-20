@@ -39,7 +39,9 @@ const Description = (props) => {
   useEffect(() => {
     country.borders.forEach(async (code) => {
       const name = await getNameByCode(code);
-      setBorders((prev) => [...prev, name]);
+      if (typeof name === "string") {
+        setBorders((prev) => [...prev, name]);
+      }
     });
   }, [country.borders]);
 
