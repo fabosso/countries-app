@@ -42,7 +42,7 @@ const Description = (props) => {
     country.borders.forEach(async (code) => {
       const name = await getNameByCode(code);
       if (name) {
-        setBorders((prev) => [...prev, name]);
+        setBorders((prev) => [...prev, { name: name, code: code }]);
       }
     });
   }, [country.borders]);

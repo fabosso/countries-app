@@ -13,28 +13,10 @@
     flex-wrap: wrap;
     justify-content: left;
   }
-
-  .button {
-    margin: 0px 8px 8px 0px;
-    width: 95px;
-  }
 }
 
 @media screen and (min-width: 640px) {
   .wrapper {
     display: inline-block;
   }
-
-  .button {
-    margin: 4px;
-    width: 100px;
-  }
-}
-
-.button {
-  height: 30px;
-  box-shadow: 0 0 5px var(--shade-color);
-  border: none;
-  background-color: var(--elements-color);
-  color: var(--text-color);
 }

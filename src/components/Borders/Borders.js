@@ -1,3 +1,4 @@
+import Border from "../Border/Border";
 import styles from "./Borders.module.scss";
 
 const Borders = (props) => {
@@ -6,10 +7,8 @@ const Borders = (props) => {
     <div className={styles.container}>
       <strong>Border Countries: </strong>
       <div className={styles.wrapper}>
-        {borders.map((actualName) => (
-          <button className={styles.button} key={actualName}>
-            {actualName}
-          </button>
+        {borders.map((border) => (
+          <Border border={border} key={border.code} />
         ))}
       </div>
     </div>
