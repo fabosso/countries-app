@@ -1,11 +1,13 @@
 import styles from "./Border.module.scss";
+import { useHistory } from "react-router-dom";
 
 const Border = (props) => {
   const { border } = props;
+  const history = useHistory();
 
   const handleClick = () => {
     // TODO: route into another country page
-    //console.log(border);
+    // algo como: history.push(`description/${border.code}`);
   };
 
   return (
