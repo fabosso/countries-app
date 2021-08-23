@@ -19,11 +19,11 @@ export function CountriesProvider(props) {
     population: 0,
     borders: [""],
   });
-  const { id } = useParams();
+  const { prefix } = useParams();
 
   useEffect(() => {
     async function fetchCountryInfo() {
-      const code = id ? id : "bel";
+      const code = prefix ? prefix : "bel";
       // ToDo: replace with const code = useParams(); or sth like that
       const newCountry = await getInfoByCode(code);
       if (newCountry) {
@@ -31,7 +31,7 @@ export function CountriesProvider(props) {
       }
     }
     fetchCountryInfo();
-  }, [id]);
+  }, [prefix]);
 
   useEffect(() => {
     country.borders.forEach(async (code) => {

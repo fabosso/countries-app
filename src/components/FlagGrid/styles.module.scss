@@ -1,0 +1,14 @@
+.container{
+    width: 100vw;
+    display: flex; 
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+@media(max-width: 615px){
+    .container{
+        justify-content: center;
+    }
+}

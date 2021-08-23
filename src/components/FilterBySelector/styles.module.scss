@@ -1,0 +1,42 @@
+@import "../../assets/styles/Colors.scss";
+.container {
+  position: relative;
+  min-width: 200px;
+  z-index: 30;
+  border-radius: 5px;
+  .item_selected {
+    background-color: $--elements-color;
+    border-radius: 5px;
+    padding-left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 2px 0.5px rgba(202, 202, 202, 0.52);
+
+    p {
+      margin: 0;
+      margin-right: 20px;
+    }
+  }
+
+  .select_list {
+    display: none;
+    .select_list__content {
+      border-radius: 5px;
+      list-style: none;
+      text-align: start;
+      background-color: $--elements-color;
+      padding-top: 5%;
+      padding-bottom: 5%;
+      box-shadow: 0px 0px 2px 0.5px rgba(202, 202, 202, 0.52);
+      li {
+        padding: 2%;
+      }
+    }
+    /* width: 100%;
+    height: 100%;
+    padding-left: 1em;
+    border: none;
+    box-shadow: 0px 0px 2px 0.5px rgba(202, 202, 202, 0.52); */
+  }
+}

@@ -1,13 +1,14 @@
 import DarkModeBtn from "../DarkModeBtn/DarkModeBtn";
 import styles from "./Header.module.scss";
 
-const Header = (props) => {
+export const Header = ({ children }) => {
   return (
-    <div className={styles.header}>
-      <h3>Where in the world?</h3>
-      <DarkModeBtn />
-    </div>
+    <>
+      <div className={styles.header}>
+        <h3>Where in the world?</h3>
+        <DarkModeBtn />
+      </div>
+      {children}
+    </>
   );
 };
-
-export default Header;

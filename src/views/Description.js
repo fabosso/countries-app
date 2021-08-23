@@ -1,14 +1,13 @@
 import BackBtn from "../components/BackBtn/BackBtn";
 import Borders from "../components/Borders/Borders";
 import Details from "../components/Details/Details";
-import Header from "../components/Header/Header";
 import "../assets/styles/Colors.scss";
 import "../assets/styles/Globals.scss";
 import styles from "./Description.module.scss";
 import { useCountries } from "../context/countriesContext";
 import { useHistory } from "react-router-dom";
 
-const Description = (props) => {
+export const Description = (props) => {
   const {
     country: { flag, name },
   } = useCountries();
@@ -22,7 +21,6 @@ const Description = (props) => {
 
   return (
     <>
-      <Header />
       <div className={styles.container}>
         <BackBtn backHandler={backHandler} />
         <div className={styles.wrapper}>
@@ -38,4 +36,3 @@ const Description = (props) => {
   );
 };
 
-export default Description;
