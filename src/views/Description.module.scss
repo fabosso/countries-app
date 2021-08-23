@@ -13,15 +13,12 @@
   }
 }
 
-.wrapper {
-  display: flex;
-}
-
-.wrapper img {
-  max-height: 400px;
-  max-width: 560px;
-  width: 100%;
-  aspect-ratio: 14/10;
+@media screen and (max-width: 1350px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media screen and (min-width: 1350px) {
@@ -30,11 +27,13 @@
   }
 }
 
-@media screen and (max-width: 1350px) {
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.wrapper {
+  display: flex;
+  img {
+    max-height: 400px;
+    max-width: 560px;
+    width: 100%;
+    aspect-ratio: 14/10;
   }
 }
 
