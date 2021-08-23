@@ -20,13 +20,15 @@ export function CountriesProvider(props) {
   });
 
   useEffect(() => {
-    async function fetchCountry() {
-      const newCountry = await getInfoByCode("bel");
+    async function fetchCountryInfo() {
+      const code = "bel";
+      // ToDo: replace with const code = useParams(); or sth like that
+      const newCountry = await getInfoByCode(code);
       if (newCountry) {
         setCountry(newCountry);
       }
     }
-    fetchCountry();
+    fetchCountryInfo();
   }, []);
 
   useEffect(() => {
