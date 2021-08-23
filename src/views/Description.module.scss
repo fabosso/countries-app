@@ -3,10 +3,6 @@
     margin: 0px 30px;
   }
 
-  .header {
-    padding: 0 15px;
-  }
-
   .backButton {
     height: 30px;
     width: 100px;
@@ -23,23 +19,11 @@
     margin: 0px 90px;
   }
 
-  .header {
-    padding: 0 90px;
-  }
-
   .backButton {
     height: 40px;
     width: 125px;
     margin: 50px 0;
   }
-}
-
-.header {
-  box-shadow: 0 0 5px var(--shade-color);
-  height: 90px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .backButton {
@@ -51,14 +35,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.header span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-  user-select: none;
 }
 
 .wrapper {

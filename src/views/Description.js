@@ -3,6 +3,7 @@ import { palletes } from "../utils/palletes";
 import { getNameByCode, getInfoByCode } from "../services/api";
 import Borders from "../components/Borders/Borders";
 import Details from "../components/Details/Details";
+import Header from "../components/Header/Header";
 import "../assets/styles/Colors.scss";
 import "../assets/styles/Globals.scss";
 import styles from "./Description.module.scss";
@@ -34,7 +35,7 @@ const Description = (props) => {
     fetchCountry();
   }, []);
 
-  const handleClick = () => {
+  const darkModeHandler = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
@@ -56,13 +57,7 @@ const Description = (props) => {
 
   return (
     <>
-      <div className={styles.header}>
-        <h3>Where in the world?</h3>
-        <span onClick={handleClick}>
-          <ion-icon name="moon-outline"></ion-icon>
-          &nbsp; Dark Mode
-        </span>
-      </div>
+      <Header darkModeHandler={darkModeHandler} />
       <div className={styles.container}>
         <button className={styles.backButton}>
           <span>
