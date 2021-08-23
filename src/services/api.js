@@ -10,6 +10,9 @@ export const getAll = async () => {
 };
 
 export const getInfoByCode = async (code) => {
+  if (!(code.length === 2 || code.length === 3)) {
+    return null;
+  }
   const { data } = await get(
     `${API_URL}/alpha/${code}?fields=flag;name;population;region;subregion;capital;topLevelDomain;currencies;languages;borders;nativeName`
   );

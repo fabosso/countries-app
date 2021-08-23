@@ -4,7 +4,7 @@ import { getNameByCode, getInfoByCode } from "../services/api";
 import Borders from "../components/Borders/Borders";
 import Details from "../components/Details/Details";
 import "../assets/styles/Colors.scss";
-import "../assets/styles/globals.scss";
+import "../assets/styles/Globals.scss";
 import styles from "./Description.module.scss";
 
 const Description = (props) => {
@@ -27,7 +27,9 @@ const Description = (props) => {
   useEffect(() => {
     async function fetchCountry() {
       const newCountry = await getInfoByCode("bel");
-      setCountry(newCountry);
+      if (newCountry) {
+        setCountry(newCountry);
+      }
     }
     fetchCountry();
   }, []);
@@ -39,7 +41,7 @@ const Description = (props) => {
   useEffect(() => {
     country.borders.forEach(async (code) => {
       const name = await getNameByCode(code);
-      if (typeof name === "string") {
+      if (name) {
         setBorders((prev) => [...prev, name]);
       }
     });
