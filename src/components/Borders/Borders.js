@@ -1,8 +1,9 @@
+import { useCountries } from "../../context/countriesContext";
 import Border from "../Border/Border";
 import styles from "./Borders.module.scss";
 
 const Borders = (props) => {
-  const { borders } = props;
+  const { borders } = useCountries();
   return (
     <div className={styles.container}>
       <strong>Border Countries: </strong>

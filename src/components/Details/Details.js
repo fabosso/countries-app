@@ -1,8 +1,9 @@
+import { useCountries } from "../../context/countriesContext";
 import Detail from "../Detail/Detail";
 import styles from "./Details.module.scss";
 
 const Details = (props) => {
-  const { country } = props;
+  const { country } = useCountries();
 
   const details = [
     {
@@ -38,6 +39,7 @@ const Details = (props) => {
       content: country.languages.map((language) => language.name).join(", "),
     },
   ];
+
   return (
     <div className={styles.grid}>
       <div>

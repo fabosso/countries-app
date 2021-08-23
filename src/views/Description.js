@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-import { getNameByCode, getInfoByCode } from "../services/api";
 import BackBtn from "../components/BackBtn/BackBtn";
 import Borders from "../components/Borders/Borders";
 import Details from "../components/Details/Details";
@@ -7,46 +5,17 @@ import Header from "../components/Header/Header";
 import "../assets/styles/Colors.scss";
 import "../assets/styles/Globals.scss";
 import styles from "./Description.module.scss";
+import { useCountries } from "../context/countriesContext";
 
 const Description = (props) => {
-  const [borders, setBorders] = useState([]);
-  const [country, setCountry] = useState({
-    currencies: [],
-    languages: [],
-    flag: "",
-    name: "",
-    nativeName: "",
-    topLevelDomain: [],
-    capital: "",
-    region: "",
-    subregion: "",
-    population: 0,
-    borders: [""],
-  });
-
-  useEffect(() => {
-    async function fetchCountry() {
-      const newCountry = await getInfoByCode("bel");
-      if (newCountry) {
-        setCountry(newCountry);
-      }
-    }
-    fetchCountry();
-  }, []);
+  const {
+    country: { flag, name },
+  } = useCountries();
 
   const backHandler = () => {
     // TODO: go back to Cristian's page
     // console.log("you clicked back");
   };
-
-  useEffect(() => {
-    country.borders.forEach(async (code) => {
-      const name = await getNameByCode(code);
-      if (name) {
-        setBorders((prev) => [...prev, { name: name, code: code }]);
-      }
-    });
-  }, [country.borders]);
 
   return (
     <>
@@ -54,11 +23,11 @@ const Description = (props) => {
       <div className={styles.container}>
         <BackBtn backHandler={backHandler} />
         <div className={styles.wrapper}>
-          <img src={country.flag} alt={country.name} />
+          <img src={flag} alt={name} />
           <div className={styles.info}>
-            <h2>{country.name}</h2>
-            <Details country={country} />
-            <Borders borders={borders} />
+            <h2>{name}</h2>
+            <Details />
+            <Borders />
           </div>
         </div>
       </div>
