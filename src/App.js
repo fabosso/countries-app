@@ -15,7 +15,7 @@ function App() {
             <Home />
           </Route>
           {/* TODO: replace with <Route path="/description/:id" or sth> */}
-          <Route exact path="/">
+          <Route path="/description/:id">
             <CountriesProvider>
               <Description />
             </CountriesProvider>

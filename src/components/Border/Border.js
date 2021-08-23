@@ -1,18 +1,20 @@
 import styles from "./Border.module.scss";
 import { useHistory } from "react-router-dom";
+import { useCountries } from "../../context/countriesContext";
 
 const Border = (props) => {
   const { border } = props;
+  const { setBorders } = useCountries();
   const history = useHistory();
 
   const handleClick = () => {
-    // TODO: route into another country page
-    // algo como: history.push(`description/${border.code}`);
+    history.push(`${border.code}`);
+    setBorders([]);
   };
 
   return (
     <button className={styles.button} key={border.name} onClick={handleClick}>
-      {border.name}
+      <div className={styles.text}>{border.name}</div>
     </button>
   );
 };

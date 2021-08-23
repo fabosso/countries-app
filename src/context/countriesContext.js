@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { getNameByCode, getInfoByCode } from "../services/api";
+import { useParams } from "react-router-dom";
 
 const countriesContext = createContext();
 
@@ -18,10 +19,11 @@ export function CountriesProvider(props) {
     population: 0,
     borders: [""],
   });
+  const { id } = useParams();
 
   useEffect(() => {
     async function fetchCountryInfo() {
-      const code = "bel";
+      const code = id ? id : "bel";
       // ToDo: replace with const code = useParams(); or sth like that
       const newCountry = await getInfoByCode(code);
       if (newCountry) {
@@ -29,7 +31,7 @@ export function CountriesProvider(props) {
       }
     }
     fetchCountryInfo();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     country.borders.forEach(async (code) => {
@@ -40,7 +42,12 @@ export function CountriesProvider(props) {
     });
   }, [country.borders]);
 
-  return <countriesContext.Provider value={{ borders, country }} {...props} />;
+  return (
+    <countriesContext.Provider
+      value={{ borders, country, setBorders }}
+      {...props}
+    />
+  );
 }
 
 export function useCountries() {
