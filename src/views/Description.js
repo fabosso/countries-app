@@ -6,15 +6,18 @@ import "../assets/styles/Colors.scss";
 import "../assets/styles/Globals.scss";
 import styles from "./Description.module.scss";
 import { useCountries } from "../context/countriesContext";
+import { useHistory } from "react-router-dom";
 
 const Description = (props) => {
   const {
     country: { flag, name },
   } = useCountries();
 
+  const history = useHistory();
+
   const backHandler = () => {
-    // TODO: go back to Cristian's page
-    // console.log("you clicked back");
+    // TODO: replace with history.push('/')
+    history.push("/placeholder-home");
   };
 
   return (
