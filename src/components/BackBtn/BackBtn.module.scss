@@ -1,0 +1,26 @@
+@media screen and (max-width: 640px) {
+  .button {
+    height: 30px;
+    width: 100px;
+    margin: 40px 0px 50px 0;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .button {
+    height: 40px;
+    width: 125px;
+    margin: 50px 0;
+  }
+}
+
+.button {
+  box-shadow: 0 0 5px var(--shade-color);
+  border-radius: 4px;
+  border: none;
+  background-color: var(--elements-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

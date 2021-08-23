@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { palletes } from "../utils/palletes";
 import { getNameByCode, getInfoByCode } from "../services/api";
+import BackBtn from "../components/BackBtn/BackBtn";
 import Borders from "../components/Borders/Borders";
 import Details from "../components/Details/Details";
 import Header from "../components/Header/Header";
@@ -35,6 +36,11 @@ const Description = (props) => {
     fetchCountry();
   }, []);
 
+  const backHandler = () => {
+    // TODO: go back to Cristian's page
+    // console.log("you clicked back");
+  };
+
   const darkModeHandler = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
@@ -59,12 +65,8 @@ const Description = (props) => {
     <>
       <Header darkModeHandler={darkModeHandler} />
       <div className={styles.container}>
-        <button className={styles.backButton}>
-          <span>
-            <ion-icon name="arrow-back-sharp"></ion-icon>
-            &nbsp; Back
-          </span>
-        </button>
+        <BackBtn backHandler={backHandler} />
+
         <div className={styles.wrapper}>
           <img src={country.flag} alt={country.name} />
           <div className={styles.info}>

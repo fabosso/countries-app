@@ -2,13 +2,6 @@
   .container {
     margin: 0px 30px;
   }
-
-  .backButton {
-    height: 30px;
-    width: 100px;
-    margin: 40px 0px 50px 0;
-  }
-
   .info h2 {
     margin-top: 50px;
   }
@@ -18,23 +11,6 @@
   .container {
     margin: 0px 90px;
   }
-
-  .backButton {
-    height: 40px;
-    width: 125px;
-    margin: 50px 0;
-  }
-}
-
-.backButton {
-  box-shadow: 0 0 5px var(--shade-color);
-  border-radius: 4px;
-  border: none;
-  background-color: var(--elements-color);
-  color: var(--text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .wrapper {
