@@ -1,0 +1,42 @@
+@media screen and (max-width: 640px) {
+  .container {
+    margin: 0px 30px;
+  }
+  .info h2 {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .container {
+    margin: 0px 90px;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1350px) {
+  .wrapper {
+    justify-content: space-between;
+  }
+}
+
+.wrapper {
+  display: flex;
+  img {
+    max-height: 400px;
+    max-width: 560px;
+    width: 100%;
+    aspect-ratio: 14/10;
+  }
+}
+
+.info {
+  max-width: 600px;
+}
