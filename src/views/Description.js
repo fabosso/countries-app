@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { palletes } from "../utils/palletes";
 import { getNameByCode, getInfoByCode } from "../services/api";
 import BackBtn from "../components/BackBtn/BackBtn";
 import Borders from "../components/Borders/Borders";
@@ -10,7 +9,6 @@ import "../assets/styles/Globals.scss";
 import styles from "./Description.module.scss";
 
 const Description = (props) => {
-  const [theme, setTheme] = useState("light");
   const [borders, setBorders] = useState([]);
   const [country, setCountry] = useState({
     currencies: [],
@@ -41,10 +39,6 @@ const Description = (props) => {
     // console.log("you clicked back");
   };
 
-  const darkModeHandler = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
-
   useEffect(() => {
     country.borders.forEach(async (code) => {
       const name = await getNameByCode(code);
@@ -54,19 +48,11 @@ const Description = (props) => {
     });
   }, [country.borders]);
 
-  useEffect(() => {
-    const properties = palletes[theme];
-    for (const [key, value] of Object.entries(properties)) {
-      document.documentElement.style.setProperty(key, value);
-    }
-  }, [theme]);
-
   return (
     <>
-      <Header darkModeHandler={darkModeHandler} />
+      <Header />
       <div className={styles.container}>
         <BackBtn backHandler={backHandler} />
-
         <div className={styles.wrapper}>
           <img src={country.flag} alt={country.name} />
           <div className={styles.info}>
