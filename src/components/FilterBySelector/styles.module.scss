@@ -1,11 +1,10 @@
-@import "../../assets/styles/Colors.scss";
 .container {
   position: relative;
   min-width: 200px;
   z-index: 30;
   border-radius: 5px;
   .item_selected {
-    background-color: $--elements-color;
+    background-color: var(--elements-color);
     border-radius: 5px;
     padding-left: 5%;
     display: flex;
@@ -25,7 +24,7 @@
       border-radius: 5px;
       list-style: none;
       text-align: start;
-      background-color: $--elements-color;
+      background-color: var(--elements-color);
       padding-top: 5%;
       padding-bottom: 5%;
       box-shadow: 0px 0px 2px 0.5px rgba(202, 202, 202, 0.52);
