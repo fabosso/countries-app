@@ -1,8 +1,10 @@
 import styles from "./styles.module.scss";
 import { useState } from "react";
+import { getKeyByValue } from "../../utils/getKeyByValue";
 
 export const FilterBySelector = ({ select, resetSearchValue }) => {
   const [clicked, setClicked] = useState(false);
+  const { values : regions, selectedValue } = select;
   const onClick = (event) => {
     resetSearchValue();
     select.onChange(event);
@@ -18,8 +20,8 @@ export const FilterBySelector = ({ select, resetSearchValue }) => {
       >
         <p>
           {" "}
-          {select.selectedValue
-            ? select.selectedValue
+          {selectedValue
+            ? getKeyByValue(regions, selectedValue)
             : "Filter by Region"}{" "}
         </p>
 
@@ -30,12 +32,12 @@ export const FilterBySelector = ({ select, resetSearchValue }) => {
         style={{ display: clicked && "block" }}
       >
         <ul className={styles.select_list__content}>
-          {select.values.map((data, index) => (
+          {Object.keys(regions).map((name, index) => (
             <li
               className={styles.list}
               key={index}
-              onClick={() => onClick({ target: { value: data } })}
-            >{`${data}`}</li>
+              onClick={() => onClick({ target: { value: regions[name] } })}
+            >{name}</li>
           ))}
         </ul>
       </div>
