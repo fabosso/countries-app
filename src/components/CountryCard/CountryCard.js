@@ -14,15 +14,15 @@ export const CountryCard = ({ country }) => {
       </div>
       <div className={styles.content__text}>
         <h2>{country.name}</h2>
-        <p className={styles.paragraph}>
+        <p className={styles.paragrahp}>
           <strong>Population: </strong>
-          {country.population.toLocaleString("en")}
+          {country.population}
         </p>
-        <p className={styles.paragraph}>
+        <p className={styles.paragrahp}>
           <strong>Region: </strong>
           {country.region}
         </p>
-        <p className={styles.paragraph}>
+        <p className={styles.paragrahp}>
           <strong>Capital: </strong>
           {country.capital}
         </p>
