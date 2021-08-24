@@ -1,7 +1,9 @@
 import styles from "./styles.module.scss";
-
+import { Link } from "react-router-dom";
 export const CountryCard = ({ country }) => {
+  console.log(country)
   return (
+    <Link to={`description/${country.alpha3Code}`}>
     <div className={styles.container}>
       <div className={styles.wrapper__img}>
         <img
@@ -26,5 +28,6 @@ export const CountryCard = ({ country }) => {
         </p>
       </div>
     </div>
+    </Link>
   );
 };

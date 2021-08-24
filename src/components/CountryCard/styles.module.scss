@@ -1,5 +1,8 @@
 @import "../../assets/styles/Colors.scss";
-
+a{
+  text-decoration: none;
+  color:inherit;
+}
 .container {
   border-radius: 7px;
   overflow: hidden;

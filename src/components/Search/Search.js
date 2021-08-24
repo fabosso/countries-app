@@ -1,4 +1,4 @@
-import styles from "./styles.module.scss"
+import styles from "./styles.module.scss";
 export const Search = ({ search, resetSelectValue }) => {
   const onChange = (event) => {
     resetSelectValue();
@@ -6,10 +6,14 @@ export const Search = ({ search, resetSelectValue }) => {
   };
   return (
     <div className={styles.container}>
-      <div className={styles.icon} >
-       <ion-icon name="search-outline"></ion-icon>
-       </div>
-      <input placeholder="Search for a country..." className={styles.search} {...{ ...search, onChange }} />
+      <div className={styles.icon}>
+        <ion-icon name="search-outline"></ion-icon>
+      </div>
+      <input
+        placeholder="Search for a country..."
+        className={styles.search}
+        {...{ ...search, onChange }}
+      />
     </div>
   );
 };
