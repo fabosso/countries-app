@@ -1,8 +1,8 @@
 import BackBtn from "../../components/BackBtn/BackBtn";
 import Borders from "../../components/Borders/Borders";
 import Details from "../../components/Details/Details";
-import "../assets/styles/Colors.scss";
-import "../assets/styles/Globals.scss";
+import "../../assets/styles/Colors.scss";
+import "../../assets/styles/Globals.scss";
 import styles from "./styles.module.scss";
 import { useCountries } from "../../context/countriesContext";
 import { useHistory } from "react-router-dom";

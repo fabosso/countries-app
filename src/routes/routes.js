@@ -1,5 +1,5 @@
 import { Home } from "../views/Home/Home";
-import { Description } from "../views/Description";
+import { Description } from "../views/Description/Description";
 import { Navbar } from "../layout/Navbar";
 import { CountriesProvider } from "../context/countriesContext";
 import { NotFound } from "../components/NotFound/NotFound";
