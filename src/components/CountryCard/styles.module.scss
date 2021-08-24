@@ -1,10 +1,8 @@
 .container {
   border-radius: 7px;
   overflow: hidden;
-  height: 400px;
-  flex: 0 0 21%;
-  min-width: 272px;
-  margin-bottom: 50px;
+  width: 265px;
+  height: 335px;
   box-shadow: 0 0 5px var(--shade-color);
   background-color: var(--elements-color);
   .content__text {
