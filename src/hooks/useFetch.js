@@ -1,11 +1,13 @@
-import { useState } from "react";
-export const useFetch = async ({ fetch }) => {
+import { useState, useCallback } from "react";
+export const useFetch = ({ fetch }) => {
   const [value, setValue] = useState(null);
-  const data = await fetch();
-  setValue(data);
+  const doFetch = useCallback(async() => {
+    const data = await fetch();
+    setValue(data);
+  },[fetch]);
 
   return {
     value,
-    setValue,
+    doFetch,
   };
 };
