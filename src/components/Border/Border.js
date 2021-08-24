@@ -1,4 +1,4 @@
-import styles from "./Border.module.scss";
+import styles from "./styles.module.scss";
 import { useHistory } from "react-router-dom";
 import { useCountries } from "../../context/countriesContext";
 

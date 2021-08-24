@@ -1,4 +1,4 @@
-import styles from "./BackBtn.module.scss";
+import styles from "./styles.module.scss";
 
 const BackBtn = (props) => {
   const { backHandler } = props;

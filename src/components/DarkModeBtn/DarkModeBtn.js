@@ -1,5 +1,5 @@
 import { useTheme } from "../../context/themeContext";
-import styles from "./DarkModeBtn.module.scss";
+import styles from "./styles.module.scss";
 
 const DarkModeBtn = (props) => {
   const { darkModeHandler } = useTheme();
