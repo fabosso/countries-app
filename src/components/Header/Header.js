@@ -1,5 +1,5 @@
 import DarkModeBtn from "../DarkModeBtn/DarkModeBtn";
-import styles from "./Header.module.scss";
+import styles from "./styles.module.scss";
 
 export const Header = ({ children }) => {
   return (

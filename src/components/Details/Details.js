@@ -1,6 +1,6 @@
 import { useCountries } from "../../context/countriesContext";
 import Detail from "../Detail/Detail";
-import styles from "./Details.module.scss";
+import styles from "./styles.module.scss";
 
 const Details = (props) => {
   const { country } = useCountries();

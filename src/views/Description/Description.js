@@ -1,10 +1,10 @@
-import BackBtn from "../components/BackBtn/BackBtn";
-import Borders from "../components/Borders/Borders";
-import Details from "../components/Details/Details";
+import BackBtn from "../../components/BackBtn/BackBtn";
+import Borders from "../../components/Borders/Borders";
+import Details from "../../components/Details/Details";
 import "../assets/styles/Colors.scss";
 import "../assets/styles/Globals.scss";
-import styles from "./Description.module.scss";
-import { useCountries } from "../context/countriesContext";
+import styles from "./styles.module.scss";
+import { useCountries } from "../../context/countriesContext";
 import { useHistory } from "react-router-dom";
 
 export const Description = (props) => {
@@ -35,4 +35,3 @@ export const Description = (props) => {
     </>
   );
 };
-
