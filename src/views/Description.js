@@ -16,7 +16,7 @@ export const Description = (props) => {
 
   const backHandler = () => {
     // TODO: replace with history.push('/')
-    history.push("/placeholder-home");
+    history.push("/");
   };
 
   return (
