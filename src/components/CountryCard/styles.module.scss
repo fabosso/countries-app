@@ -7,9 +7,17 @@
   background-color: var(--elements-color);
   .content__text {
     padding-left: 25px;
-
+    h2 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .paragraph {
       margin: 0;
+      line-height: 1.8;
+      strong {
+        font-weight: 600;
+      }
     }
   }
   .wrapper__img {
