@@ -5,7 +5,7 @@
   flex: 0 0 21%;
   min-width: 272px;
   margin-bottom: 50px;
-  box-shadow: 0px 0px 2px 0.5px rgba(202, 202, 202, 0.52);
+  box-shadow: 0 0 5px var(--shade-color);
   background-color: var(--elements-color);
   .content__text {
     padding-left: 5%;
@@ -17,7 +17,6 @@
   .wrapper__img {
     position: relative;
     height: 47%;
-    box-shadow: 0px 0px 2px 0.5px rgba(202, 202, 202, 0.52);
 
     .country_img {
       width: 100%;
