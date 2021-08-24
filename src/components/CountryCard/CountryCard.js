@@ -1,10 +1,13 @@
 import styles from "./styles.module.scss";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 export const CountryCard = ({ country }) => {
-  console.log(country)
+  const history = useHistory();
+  const handleClick = () => {
+    history.push(`description/${country.alpha3Code}`);
+  };
+
   return (
-    <Link to={`description/${country.alpha3Code}`}>
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handleClick}>
       <div className={styles.wrapper__img}>
         <img
           className={styles.country_img}
@@ -28,6 +31,5 @@ export const CountryCard = ({ country }) => {
         </p>
       </div>
     </div>
-    </Link>
   );
 };
