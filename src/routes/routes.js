@@ -2,6 +2,7 @@ import { Home } from "../views/Home/Home";
 import { Description } from "../views/Description";
 import { Navbar } from "../layout/Navbar";
 import { CountriesProvider } from "../context/countriesContext";
+import { NotFound } from "../components/NotFound/NotFound";
 export const routes = [
   {
     path: "/",
@@ -15,5 +16,10 @@ export const routes = [
     layout: Navbar,
     provider: CountriesProvider,
     exact: true,
+  },
+  {
+    path: "*",
+    component: NotFound,
+    layout: Navbar,
   },
 ];
