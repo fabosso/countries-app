@@ -9,8 +9,8 @@ import { regions } from "./Home.constants";
 import { getAll } from "../../services/api";
 import { useFetch } from "../../hooks/useFetch";
 import { useEffect } from "react";
-export const Home = () => {
-  const { resetSearchValue, ...search } = useField("text");
+export const Home = ():JSX.Element => {
+  const { resetSearchValue, ...search } = useField({ type:"text" });
   const { resetSelectValue, ...select } = useSelect({ initialState: regions });
   const { value: countries, doFetch: getCountries } = useFetch({
     fetch: getAll,

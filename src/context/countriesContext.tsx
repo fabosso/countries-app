@@ -2,9 +2,9 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { getNameByCode, getInfoByCode } from "../services/api";
 import { useParams } from "react-router-dom";
 
-const countriesContext = createContext();
+const countriesContext:any = createContext(null);
 
-export function CountriesProvider(props) {
+export function CountriesProvider(props:any) {
   const [borders, setBorders] = useState([]);
   const [country, setCountry] = useState({
     currencies: [],
@@ -19,7 +19,8 @@ export function CountriesProvider(props) {
     population: 0,
     borders: [""],
   });
-  const { prefix } = useParams();
+
+  const { prefix }:{prefix:string} = useParams();
 
   useEffect(() => {
     async function fetchCountryInfo() {
@@ -37,7 +38,7 @@ export function CountriesProvider(props) {
     country.borders.forEach(async (code) => {
       const name = await getNameByCode(code);
       if (name) {
-        setBorders((prev) => [...prev, { name: name, code: code }]);
+        setBorders((prev):any => [...prev, { name: name, code: code }]);
       }
     });
   }, [country.borders]);

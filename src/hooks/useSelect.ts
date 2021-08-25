@@ -1,9 +1,13 @@
 import { useState } from "react";
 
-export const useSelect = ({ initialState = [] }) => {
+type selectParams = {
+  initialState: any[]
+}
+
+export const useSelect = ({ initialState = [] }:selectParams) => {
   const values = initialState;
-  const [selectedValue, setSelectedValue] = useState("");
-  const onChange = (event) => {
+  const [selectedValue, setSelectedValue] = useState<string>("");
+  const onChange = (event:any) => {
     setSelectedValue(event.target.value);
   };
   const resetSelectValue = () => {

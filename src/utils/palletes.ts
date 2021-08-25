@@ -1,4 +1,6 @@
-export const palletes = {
+import { PalletesInterface } from "../interfaces/Palletes.interface";
+
+export const palletes :PalletesInterface = {
   dark: {
     "--bg-color": "hsl(207, 26%, 17%)",
     "--elements-color": "hsl(209, 23%, 22%)",

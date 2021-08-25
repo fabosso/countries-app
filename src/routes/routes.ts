@@ -3,7 +3,8 @@ import { Description } from "../views/Description/Description";
 import { Navbar } from "../layout/Navbar";
 import { CountriesProvider } from "../context/countriesContext";
 import { NotFound } from "../components/NotFound/NotFound";
-export const routes = [
+import { RouteInterface } from "../interfaces/Route.interface";
+export const routes: RouteInterface[] = [
   {
     path: "/",
     component: Home,

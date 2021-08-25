@@ -1,21 +1,28 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { palletes } from "../utils/palletes";
-import { getLocalValue, setLocalValue, removeLocalValue } from "../utils/localStorage";
-const themeContext = createContext();
+import {
+  getLocalValue,
+  setLocalValue,
+  removeLocalValue,
+} from "../utils/localStorage";
+import { ThemeInterface } from "../interfaces/Theme.interface";
 
-export function ThemeProvider(props) {
+const themeContext: any = createContext(null);
+
+export function ThemeProvider(props: any) {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    const themeLocalStorage = getLocalValue("theme");
-    const properties = palletes[themeLocalStorage] || palletes[theme];
+    const themeLocalStorage: string = getLocalValue("theme");
+    const properties: ThemeInterface =
+      palletes[themeLocalStorage] || palletes[theme];
     for (const [key, value] of Object.entries(properties)) {
       document.documentElement.style.setProperty(key, value);
     }
   }, [theme]);
 
   const darkModeHandler = () => {
-    const _theme = theme === "light" ? "dark" : "light"
+    const _theme = theme === "light" ? "dark" : "light";
     setTheme(_theme);
     removeLocalValue("theme");
     setLocalValue("theme", _theme);

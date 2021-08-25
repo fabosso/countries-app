@@ -2,12 +2,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { routes } from "./routes/routes";
 import { ThemeProvider } from "./context/themeContext";
 
-function App() {
+function App():JSX.Element {
   return (
     <ThemeProvider>
       <BrowserRouter>
         <Switch>
-          {routes.map((route, index) => (
+          {routes.map((route:any, index) => (
             <Route
               key={index}
               path={route.path}
