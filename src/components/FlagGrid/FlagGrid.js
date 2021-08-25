@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import { useEffect, useState, useCallback } from "react";
 
 export const FlagGrid = ({ countries, wordSearch, region }) => {
-  const [countriesList, setCountriesList] = useState([]);
+  const [countriesList, setCountriesList] = useState(Array(20).fill(null));
 
   const filterCountries = useCallback(() => {
     setCountriesList(
@@ -16,8 +16,11 @@ export const FlagGrid = ({ countries, wordSearch, region }) => {
     );
   }, [countries, wordSearch, region, setCountriesList]);
 
-  useEffect(() => filterCountries(), [filterCountries]);
-
+  useEffect(() => {
+    if (countries) {
+      filterCountries();
+    }
+  }, [filterCountries, countries]);
   if (!countriesList.length) {
     return (
       <div className={styles.container}>
