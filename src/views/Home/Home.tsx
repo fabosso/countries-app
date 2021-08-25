@@ -1,13 +1,13 @@
 import { Search } from "../../components/Search/Search";
+import { useGrid } from "../../context/gridContext";
 
 import { FlagGrid } from "../../components/FlagGrid/FlagGrid";
 import { FilterBySelector } from "../../components/FilterBySelector/FilterBySelector";
 
 import styles from "./styles.module.scss";
 import "../../assets/styles/Globals.scss";
-import { useGrid } from "../../context/gridContext";
 
-export const Home = () => {
+export const Home = ():JSX.Element => {
   const { countries, search, select, resetSearchValue, resetSelectValue } =
     useGrid();
 

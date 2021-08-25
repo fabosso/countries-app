@@ -3,10 +3,10 @@ import { getNameByCode, getInfoByCode } from "../services/api";
 import { useParams } from "react-router-dom";
 import { useGlobal } from "./globalContext";
 
-const descriptionContext = createContext();
+const descriptionContext : any = createContext(null);
 
-export function DescriptionProvider(props) {
-  const { setBorders } = useGlobal();
+export function DescriptionProvider(props:any) {
+  const { setBorders } : any = useGlobal();
 
   const [country, setCountry] = useState({
     currencies: [],
@@ -21,7 +21,8 @@ export function DescriptionProvider(props) {
     population: null,
     borders: [""],
   });
-  const { prefix } = useParams();
+
+  const { prefix }:{prefix:string} = useParams();
 
   useEffect(() => {
     async function fetchCountryInfo() {
@@ -37,21 +38,21 @@ export function DescriptionProvider(props) {
   useEffect(() => {
     if (country.borders.length !== 0) {
       country.borders.forEach(async (code) => {
-        const name = await getNameByCode(code);
-        if (name) {
-          setBorders((prev) => {
-            if (!prev) {
-              return [{ name: name, code: code }];
-            } else {
-              return [...prev, { name: name, code: code }];
-            }
-          });
-        }
-      });
-    } else {
-      // setting borders to [] means that the country is resolved to have no borders.
-      setBorders([]);
-    }
+      const name = await getNameByCode(code);
+      if (name) {
+        setBorders((prev: Object[]) => {
+          if (!prev) {
+            return [{ name: name, code: code }];
+          } else {
+            return [...prev, { name: name, code: code }];
+          }
+        });
+      }
+    });
+  } else {
+    // setting borders to [] means that the country is resolved to have no borders.
+    setBorders([]);
+  }
   }, [country.borders, setBorders]);
 
   return <descriptionContext.Provider value={{ country }} {...props} />;
