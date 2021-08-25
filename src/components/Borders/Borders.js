@@ -8,9 +8,11 @@ const Borders = (props) => {
     <div className={styles.container}>
       <strong>Border Countries: </strong>
       <div className={styles.wrapper}>
-        {borders.map((border) => (
-          <Border border={border} key={border.code} />
-        ))}
+        {borders.length !== 0
+          ? borders.map((border) => (
+              <Border border={border} key={border.code} />
+            ))
+          : "this country has no borders."}
       </div>
     </div>
   );

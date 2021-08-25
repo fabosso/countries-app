@@ -6,6 +6,7 @@
   height: 335px;
   box-shadow: 0 0 5px var(--shade-color);
   background-color: var(--elements-color);
+  transition: box-shadow 2s;
   .content__text {
     padding-left: 25px;
     h2 {
