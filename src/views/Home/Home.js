@@ -29,17 +29,11 @@ export const Home = () => {
             resetSearchValue={resetSearchValue}
           />
         </div>
-        {!countries?.length ? (
-          <div className={styles.spinner_content}>
-          <div className={styles.spinner}></div>
-          </div>
-        ) : (
           <FlagGrid
             countries={countries}
             wordSearch={search.value}
             region={select.selectedValue}
           />
-        )}
       </div>
     </>
   );
