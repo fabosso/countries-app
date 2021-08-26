@@ -1,27 +1,60 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useLayoutEffect,
+} from "react";
 import { palletes } from "../utils/palletes";
-import { getLocalValue, setLocalValue, removeLocalValue } from "../utils/localStorage";
+import {
+  getLocalValue,
+  setLocalValue,
+  removeLocalValue,
+} from "../utils/localStorage";
 const themeContext = createContext();
 
 export function ThemeProvider(props) {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(null);
+  const [transitions, setTransitions] = useState(false);
 
   useEffect(() => {
+    if (transitions) {
+      document.documentElement.style.setProperty(
+        "--transitions-duration",
+        "1s"
+      );
+    }
+  }, [transitions]);
+
+  useLayoutEffect(() => {
     const themeLocalStorage = getLocalValue("theme");
-    const properties = palletes[themeLocalStorage] || palletes[theme];
+
+    const properties = themeLocalStorage
+      ? palletes[themeLocalStorage]
+      : theme
+      ? palletes[theme]
+      : palletes["light"];
     for (const [key, value] of Object.entries(properties)) {
       document.documentElement.style.setProperty(key, value);
+    }
+    if (!theme) {
+      setTheme("light");
     }
   }, [theme]);
 
   const darkModeHandler = () => {
-    const _theme = theme === "light" ? "dark" : "light"
+    const _theme = theme === "light" ? "dark" : "light";
     setTheme(_theme);
     removeLocalValue("theme");
     setLocalValue("theme", _theme);
   };
 
-  return <themeContext.Provider value={{ darkModeHandler }} {...props} />;
+  return (
+    <themeContext.Provider
+      value={{ darkModeHandler, setTransitions, theme }}
+      {...props}
+    />
+  );
 }
 
 export function useTheme() {

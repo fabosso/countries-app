@@ -9,15 +9,19 @@ import { regions } from "./Home.constants";
 import { getAll } from "../../services/api";
 import { useFetch } from "../../hooks/useFetch";
 import { useEffect } from "react";
+import { useTheme } from "../../context/themeContext";
 export const Home = () => {
   const { resetSearchValue, ...search } = useField("text");
   const { resetSelectValue, ...select } = useSelect({ initialState: regions });
   const { value: countries, doFetch: getCountries } = useFetch({
     fetch: getAll,
   });
+  const { setTransitions } = useTheme();
+
   useEffect(() => {
     getCountries();
-  }, [getCountries]);
+    setTransitions(true);
+  }, [getCountries, setTransitions]);
 
   return (
     <>
@@ -29,11 +33,11 @@ export const Home = () => {
             resetSearchValue={resetSearchValue}
           />
         </div>
-          <FlagGrid
-            countries={countries}
-            wordSearch={search.value}
-            region={select.selectedValue}
-          />
+        <FlagGrid
+          countries={countries}
+          wordSearch={search.value}
+          region={select.selectedValue}
+        />
       </div>
     </>
   );
