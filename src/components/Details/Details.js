@@ -12,7 +12,9 @@ const Details = (props) => {
     },
     {
       title: "Population",
-      content: country.population.toLocaleString("en"),
+      content: country.population
+        ? country.population.toLocaleString("en")
+        : null,
     },
     {
       title: "Region",
