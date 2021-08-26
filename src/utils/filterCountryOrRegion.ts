@@ -7,7 +7,7 @@ export const filterCountryOrRegion = ({
   countries,
   word,
   region,
-}: filterParams) => {
+}: filterParams):any => {
   
   return countries.filter((data: any, index: number): any => {
     if (!word && !region) {

@@ -1,4 +1,4 @@
-export const regions:any = {
+export const regions:  {[key: string]: string }  = {
   Africa: "africa",
   America: "americas",
   Asia: "asia",
