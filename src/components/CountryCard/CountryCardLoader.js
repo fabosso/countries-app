@@ -1,10 +1,11 @@
 import styles from "./styles.module.scss";
 import Skeleton from "react-loading-skeleton";
+
 export const CountryCardLoader = ({ country }) => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper__img}>
-        <Skeleton className={styles.country_img} />
+        <Skeleton className={styles.country_img} height={160} />
       </div>
       <div className={styles.content}>
         <div className={styles.content__text}>

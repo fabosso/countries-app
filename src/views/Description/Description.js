@@ -4,11 +4,11 @@ import Details from "../../components/Details/Details";
 import "../../assets/styles/Globals.scss";
 import styles from "./styles.module.scss";
 import { useCountries } from "../../context/countriesContext";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useTheme } from "../../context/themeContext";
 import { palletes } from "../../utils/palletes";
-import { getLocalValue } from "../../utils/localStorage";
 
 export const Description = (props) => {
   const {
@@ -18,24 +18,35 @@ export const Description = (props) => {
   const backHandler = () => {
     history.push("/");
   };
-
   const { theme } = useTheme();
-  const themeLS = getLocalValue("theme");
-  const properties = themeLS ? palletes[themeLS] : palletes[theme];
+  const [imageMeta, setImageMeta] = useState({
+    loaded: false,
+    style: { display: "none" },
+  });
+
+  const handleImageLoad = () => {
+    setImageMeta({
+      loaded: true,
+      style: { display: "initial" },
+    });
+  };
+
   return (
     <>
       <div className={styles.container}>
         <BackBtn backHandler={backHandler} />
         <div className={styles.wrapper}>
-          {name ? (
-            <img src={flag} alt={name} />
-          ) : (
-            <div className={styles.imgSkeleton}></div>
-          )}
+          {!imageMeta.loaded && <div className={styles.imgSkeleton}></div>}
+          <img
+            src={flag}
+            alt={name}
+            onLoad={handleImageLoad}
+            style={imageMeta.style}
+          />
           <div className={styles.info}>
             <SkeletonTheme
-              color={properties["--skeleton-color"]}
-              highlightColor={properties["--shine-color"]}
+              color={palletes[theme]["--skeleton-color"]}
+              highlightColor={palletes[theme]["--shine-color"]}
             >
               <h2>{name || <Skeleton />}</h2>
               <Details />

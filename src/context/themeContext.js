@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useLayoutEffect,
-} from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { palletes } from "../utils/palletes";
 import {
   getLocalValue,
@@ -14,7 +8,8 @@ import {
 const themeContext = createContext();
 
 export function ThemeProvider(props) {
-  const [theme, setTheme] = useState(null);
+  const themeLocalStorage = getLocalValue("theme");
+  const [theme, setTheme] = useState(themeLocalStorage);
   const [transitions, setTransitions] = useState(false);
 
   useEffect(() => {
@@ -26,19 +21,10 @@ export function ThemeProvider(props) {
     }
   }, [transitions]);
 
-  useLayoutEffect(() => {
-    const themeLocalStorage = getLocalValue("theme");
-
-    const properties = themeLocalStorage
-      ? palletes[themeLocalStorage]
-      : theme
-      ? palletes[theme]
-      : palletes["light"];
+  useEffect(() => {
+    const properties = theme ? palletes[theme] : palletes["light"];
     for (const [key, value] of Object.entries(properties)) {
       document.documentElement.style.setProperty(key, value);
-    }
-    if (!theme) {
-      setTheme("light");
     }
   }, [theme]);
 
