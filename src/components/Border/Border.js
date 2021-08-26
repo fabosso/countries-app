@@ -9,12 +9,14 @@ const Border = (props) => {
 
   const handleClick = () => {
     history.push(`${border.code}`);
-    setBorders([]);
+    setBorders(null); // null signalizes a temporal lack of downloaded data, NOT a lack of borders
   };
 
   return (
     <button className={styles.button} key={border.name} onClick={handleClick}>
-      <div className={styles.text}>{border.name}</div>
+      <div className={styles.text} title={border.name}>
+        {border.name}
+      </div>
     </button>
   );
 };
