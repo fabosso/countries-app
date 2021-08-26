@@ -1,3 +1,5 @@
+@import "../../assets/styles/Transitions.scss";
+
 @media screen and (max-width: 640px) {
   .header {
     padding: 0 15px;
@@ -17,6 +19,5 @@
   align-items: center;
   box-shadow: 0 0 15px var(--shade-color);
   color: var(--text-color);
-  transition: all 2s;
-  transition-property: box-shadow, color;
+  @include transition-themes(box-shadow, color);
 }

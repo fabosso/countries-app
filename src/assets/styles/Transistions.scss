@@ -1,0 +1,6 @@
+$--transitions-duration: 0s;
+
+@mixin transition-themes($arguments...) {
+  transition: all var(--transitions-duration);
+  transition-property: $arguments;
+}
