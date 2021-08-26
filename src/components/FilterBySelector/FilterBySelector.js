@@ -1,10 +1,11 @@
+import { ChevronDownOutline } from "react-ionicons";
 import styles from "./styles.module.scss";
 import { useState } from "react";
 import { getKeyByValue } from "../../utils/getKeyByValue";
 
 export const FilterBySelector = ({ select, resetSearchValue }) => {
   const [clicked, setClicked] = useState(false);
-  const { values : regions, selectedValue } = select;
+  const { values: regions, selectedValue } = select;
   const onClick = (event) => {
     resetSearchValue();
     select.onChange(event);
@@ -25,7 +26,12 @@ export const FilterBySelector = ({ select, resetSearchValue }) => {
             : "Filter by Region"}{" "}
         </p>
 
-        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ChevronDownOutline
+          color="inherit"
+          height="16px"
+          width="16px"
+          className={styles.arrow}
+        />
       </div>
       <div
         className={styles.select_list}
@@ -37,7 +43,9 @@ export const FilterBySelector = ({ select, resetSearchValue }) => {
               className={styles.list}
               key={index}
               onClick={() => onClick({ target: { value: regions[name] } })}
-            >{name}</li>
+            >
+              {name}
+            </li>
           ))}
         </ul>
       </div>
