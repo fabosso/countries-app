@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 const countriesContext = createContext();
 
 export function CountriesProvider(props) {
-  const [borders, setBorders] = useState([]);
+  const [borders, setBorders] = useState(null);
   const [country, setCountry] = useState({
     currencies: [],
     languages: [],
@@ -16,7 +16,7 @@ export function CountriesProvider(props) {
     capital: "",
     region: "",
     subregion: "",
-    population: 0,
+    population: null,
     borders: [""],
   });
   const { prefix } = useParams();
@@ -24,7 +24,6 @@ export function CountriesProvider(props) {
   useEffect(() => {
     async function fetchCountryInfo() {
       const code = prefix ? prefix : "bel";
-      // ToDo: replace with const code = useParams(); or sth like that
       const newCountry = await getInfoByCode(code);
       if (newCountry) {
         setCountry(newCountry);
@@ -34,12 +33,23 @@ export function CountriesProvider(props) {
   }, [prefix]);
 
   useEffect(() => {
-    country.borders.forEach(async (code) => {
-      const name = await getNameByCode(code);
-      if (name) {
-        setBorders((prev) => [...prev, { name: name, code: code }]);
-      }
-    });
+    if (country.borders.length !== 0) {
+      country.borders.forEach(async (code) => {
+        const name = await getNameByCode(code);
+        if (name) {
+          setBorders((prev) => {
+            if (!prev) {
+              return [{ name: name, code: code }];
+            } else {
+              return [...prev, { name: name, code: code }];
+            }
+          });
+        }
+      });
+    } else {
+      // setting borders to [] means that the country is resolved to have no borders.
+      setBorders([]);
+    }
   }, [country.borders]);
 
   return (
