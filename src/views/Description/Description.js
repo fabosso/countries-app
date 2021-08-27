@@ -19,16 +19,9 @@ export const Description = (props) => {
     history.push("/");
   };
   const { theme } = useTheme();
-  const [imageMeta, setImageMeta] = useState({
-    loaded: false,
-    style: { display: "none" },
-  });
-
+  const [imageLoaded, setImageLoaded] = useState(false);
   const handleImageLoad = () => {
-    setImageMeta({
-      loaded: true,
-      style: { display: "initial" },
-    });
+    setImageLoaded(true);
   };
 
   return (
@@ -36,12 +29,12 @@ export const Description = (props) => {
       <div className={styles.container}>
         <BackBtn backHandler={backHandler} />
         <div className={styles.wrapper}>
-          {!imageMeta.loaded && <div className={styles.imgSkeleton}></div>}
+          {!imageLoaded && <div className={styles.imgSkeleton}></div>}
           <img
             src={flag}
             alt={name}
             onLoad={handleImageLoad}
-            style={imageMeta.style}
+            style={imageLoaded ? { display: "none" } : { display: "initial" }}
           />
           <div className={styles.info}>
             <SkeletonTheme
