@@ -5,15 +5,15 @@ type filterParams = {
 };
 export const filterCountryOrRegion = ({
   countries,
-  word,
-  region,
+  word="",
+  region="",
 }: filterParams):any => {
   
   return countries.filter((data: any, index: number): any => {
     if (!word && !region) {
       return data;
     } else if (
-      (word && data.name.toLowerCase().includes(word.toLowerCase())) ||
+      (data.name.toLowerCase().includes(word.toLowerCase())) &&
       (region && data.region.toLowerCase() === region.toLowerCase())
     ) {
       return data;

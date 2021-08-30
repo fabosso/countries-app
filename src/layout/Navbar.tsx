@@ -1,7 +1,7 @@
 import { Header } from "../components/Header/Header";
 type NavbarParams = {
-  children: JSX.Element;
+  children: React.ReactElement;
 };
-export const Navbar = ({ children }: NavbarParams): JSX.Element => {
+export const Navbar = ({ children }: NavbarParams): React.ReactElement => {
   return <Header>{children}</Header>;
 };
