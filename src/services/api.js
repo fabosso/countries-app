@@ -1,6 +1,7 @@
 import { get } from "axios";
 
-export const API_URL = "https://restcountries.eu/rest/v2";
+export const BASE_URL = "https://restcountries.eu/";
+export const API_URL = BASE_URL + "/rest/v2";
 
 export const getAll = async () => {
   const { data } = await get(
