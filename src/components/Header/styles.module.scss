@@ -21,3 +21,7 @@
   color: var(--text-color);
   @include transition-themes(box-shadow, color);
 }
+
+.rightContainer {
+  display: flex;
+}
