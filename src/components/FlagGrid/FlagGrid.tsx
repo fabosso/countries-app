@@ -3,8 +3,8 @@ import { CountryCard } from "../CountryCard/CountryCard";
 import styles from "./styles.module.scss";
 import { useEffect, useState, useCallback } from "react";
 
-export const FlagGrid = ({ countries, wordSearch, region }:any):JSX.Element => {
-  const [countriesList, setCountriesList] = useState([]);
+export const FlagGrid = ({ countries, wordSearch, region }:any) => {
+  const [countriesList, setCountriesList] = useState(Array(20).fill(null));
 
   const filterCountries = useCallback(() => {
     setCountriesList(
@@ -16,8 +16,11 @@ export const FlagGrid = ({ countries, wordSearch, region }:any):JSX.Element => {
     );
   }, [countries, wordSearch, region, setCountriesList]);
 
-  useEffect(() => filterCountries(), [filterCountries]);
-
+  useEffect(() => {
+    if (countries) {
+      filterCountries();
+    }
+  }, [filterCountries, countries]);
   if (!countriesList.length) {
     return (
       <div className={styles.container}>

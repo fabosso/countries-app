@@ -4,12 +4,13 @@ import { getKeyByValue } from "../../utils/getKeyByValue";
 
 export const FilterBySelector = ({
   select,
-  resetSearchValue,
   resetSelectValue,
-}: any): JSX.Element => {
-  const [clicked, setClicked] = useState<Boolean>(false);
+  resetSearchValue,
+}:any) => {
+  const [clicked, setClicked] = useState(false);
   const { values: regions, selectedValue } = select;
-  const onClick = (event: any): void => {
+  const onClick = (event:any):void => {
+
     select.onChange(event);
     setClicked(!clicked);
   };
@@ -31,14 +32,14 @@ export const FilterBySelector = ({
           {" "}
           {selectedValue
             ? getKeyByValue(regions, selectedValue)
-            : "Filter by Region"}{" "}
+            : "Filter by Region"}
         </p>
 
-        {/*  <ion-icon name="chevron-down-outline"></ion-icon> */}
+        
       </div>
       <div
         className={styles.select_list}
-        style={{ display: clicked && "block" }}
+        style={{ display: clicked ?"block":"none" }}
       >
         <ul className={styles.select_list__content}>
           {Object.keys(regions).map((name: string, index: number) => (

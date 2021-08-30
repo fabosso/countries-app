@@ -1,4 +1,5 @@
 import { InputEvent } from "../../types/EventTypes";
+
 import styles from "./styles.module.scss";
 
 
@@ -10,7 +11,7 @@ export const Search = ({ search, resetSelectValue }:any):JSX.Element => {
   return (
     <div className={styles.container}>
       <div className={styles.icon}>
-        
+       
       </div>
       <input
         placeholder="Search for a country..."

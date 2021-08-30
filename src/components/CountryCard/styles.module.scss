@@ -1,3 +1,5 @@
+@import "../../assets/styles/Transitions.scss";
+
 .container {
   border-radius: 7px;
   cursor: pointer;
@@ -6,25 +8,31 @@
   height: 335px;
   box-shadow: 0 0 5px var(--shade-color);
   background-color: var(--elements-color);
-  .content__text {
-    padding-left: 25px;
-    h2 {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .paragraph {
-      margin: 0;
-      line-height: 1.8;
-      strong {
-        font-weight: 600;
+  @include transition-themes(box-shadow);
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .content__text {
+      width: 215px;
+      h2 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .paragraph {
+        margin: 0;
+        line-height: 1.8;
+        strong {
+          font-weight: 600;
+        }
       }
     }
   }
   .wrapper__img {
     position: relative;
-    height: 47%;
-
+    height: 160px;
+    top: -4px;
     .country_img {
       width: 100%;
       height: 100%;

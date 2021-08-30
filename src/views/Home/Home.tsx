@@ -1,23 +1,14 @@
 import { Search } from "../../components/Search/Search";
-import { useField } from "../../hooks/useField";
+
 import { FlagGrid } from "../../components/FlagGrid/FlagGrid";
 import { FilterBySelector } from "../../components/FilterBySelector/FilterBySelector";
-import { useSelect } from "../../hooks/useSelect";
 import styles from "./styles.module.scss";
 import "../../assets/styles/Globals.scss";
-import { regions } from "./Home.constants";
-import { getAll } from "../../services/api";
-import { useFetch } from "../../hooks/useFetch";
-import { useEffect } from "react";
-export const Home = ():JSX.Element => {
-  const { resetSearchValue, ...search } = useField({ type:"text" });
-  const { resetSelectValue, ...select } = useSelect({ initialState: regions });
-  const { value: countries, doFetch: getCountries } = useFetch({
-    fetch: getAll,
-  });
-  useEffect(() => {
-    getCountries();
-  }, [getCountries]);
+import { useGrid } from "../../context/gridContext";
+
+export const Home = () => {
+  const { countries, search, select, resetSearchValue, resetSelectValue } =
+    useGrid();
 
   return (
     <>
@@ -27,20 +18,14 @@ export const Home = ():JSX.Element => {
           <FilterBySelector
             select={select}
             resetSearchValue={resetSearchValue}
-            resetSelectValue = { resetSelectValue }
+            resetSelectValue={resetSelectValue}
           />
         </div>
-        {!countries?.length ? (
-          <div className={styles.spinner_content}>
-          <div className={styles.spinner}></div>
-          </div>
-        ) : (
-          <FlagGrid
-            countries={countries}
-            wordSearch={search.value}
-            region={select.selectedValue}
-          />
-        )}
+        <FlagGrid
+          countries={countries}
+          wordSearch={search.value}
+          region={select.selectedValue}
+        />
       </div>
     </>
   );

@@ -1,3 +1,5 @@
+@import "../../assets/styles/Transitions.scss";
+
 @media screen and (max-width: 640px) {
   .button {
     margin: 0px 8px 8px 0px;
@@ -14,11 +16,12 @@
 
 .button {
   height: 30px;
-  box-shadow: 0 0 5px var(--shade-color);
   border: none;
+  cursor: pointer;
+  box-shadow: 0 0 5px var(--shade-color);
   background-color: var(--elements-color);
   color: var(--text-color);
-  cursor: pointer;
+  @include transition-themes(box-shadow, background-color, color);
 }
 
 .text {

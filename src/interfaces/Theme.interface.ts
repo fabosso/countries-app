@@ -4,4 +4,6 @@ export interface ThemeInterface {
   "--shade-color": string;
   "--text-color": string;
   "--input-color": string;
+  "--skeleton-color": string;
+  "--shine-color": string;
 }

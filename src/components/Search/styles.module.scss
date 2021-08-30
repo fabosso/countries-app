@@ -11,8 +11,11 @@
   .icon {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    width: 10%;
+    justify-content: center;
+    width: 72px;
+    .iconSpan {
+      display: flex;
+    }
   }
   input {
     background-color: transparent;
@@ -26,11 +29,9 @@
     color: var(--input-color);
   }
   .search {
-    width: 100%;
-    margin: 0;
-    height: 100%;
+    flex-grow: 1;
+    padding: 0;
     border: none;
-    padding-left: 5%;
   }
 }
 

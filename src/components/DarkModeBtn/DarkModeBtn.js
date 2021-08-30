@@ -1,12 +1,15 @@
-import { useTheme } from "../../context/themeContext";
+import { useGlobal } from "../../context/globalContext";
 import styles from "./styles.module.scss";
 
+
 const DarkModeBtn = (props) => {
-  const { darkModeHandler } = useTheme();
+  const { darkModeHandler } = useGlobal();
   return (
     <span className={styles.button} onClick={darkModeHandler}>
-      <ion-icon name="moon-outline"></ion-icon>
-      &nbsp; Dark Mode
+      <span>
+       {/*  <MoonOutline height="16px" width="16px" color="inherit" /> */}
+        <span>Dark Mode</span>
+      </span>
     </span>
   );
 };
