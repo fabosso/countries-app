@@ -8,7 +8,7 @@ const BackBtn = (props) => {
     <button className={styles.button} onClick={backHandler}>
       <span>
         <ArrowBackSharp height="16px" width="16px" color="inherit" />
-        &nbsp; Back
+        <span>Back</span>
       </span>
     </button>
   );

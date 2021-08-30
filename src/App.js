@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { routes } from "./routes/routes";
-import { ThemeProvider } from "./context/themeContext";
+import { GlobalProvider } from "./context/globalContext";
 
 function App() {
   return (
-    <ThemeProvider>
+    <GlobalProvider>
       <BrowserRouter>
         <Switch>
           {routes.map((route, index) => (
@@ -33,7 +33,7 @@ function App() {
           ))}
         </Switch>
       </BrowserRouter>
-    </ThemeProvider>
+    </GlobalProvider>
   );
 }
 

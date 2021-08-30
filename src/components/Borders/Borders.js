@@ -1,10 +1,10 @@
 import Skeleton from "react-loading-skeleton";
-import { useCountries } from "../../context/countriesContext";
+import { useGlobal } from "../../context/globalContext";
 import Border from "../Border/Border";
 import styles from "./styles.module.scss";
 
 const Borders = (props) => {
-  const { borders } = useCountries();
+  const { borders } = useGlobal();
   return (
     <div className={styles.container}>
       <strong>
