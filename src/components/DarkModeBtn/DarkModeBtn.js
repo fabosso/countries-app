@@ -8,7 +8,7 @@ const DarkModeBtn = (props) => {
     <span className={styles.button} onClick={darkModeHandler}>
       <span>
         <MoonOutline height="16px" width="16px" color="inherit" />
-        &nbsp; Dark Mode
+        <span>Dark Mode</span>
       </span>
     </span>
   );

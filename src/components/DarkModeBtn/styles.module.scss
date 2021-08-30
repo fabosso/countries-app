@@ -5,6 +5,9 @@
     align-items: center;
     font-weight: 600;
     user-select: none;
+    span {
+      margin-left: 10px;
+    }
   }
   cursor: pointer;
 }
