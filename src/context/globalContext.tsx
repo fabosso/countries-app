@@ -6,22 +6,24 @@ import {
   removeLocalValue,
   reformLastVisited,
 } from "../utils/localStorage";
-const globalContext = createContext();
+import { ThemeInterface } from "../interfaces/Theme.interface";
 
-export function GlobalProvider(props) {
-  const themeLocalStorage = getLocalValue("theme")
-    ? getLocalValue("theme")
-    : "light";
-  const lastVisitedLocalStorage = getLocalValue("lastVisited")
-    ? getLocalValue("lastVisited")
-    : [];
+const globalContext: any = createContext(null);
+
+export function GlobalProvider(props: any) {
+  const themeLocalStorage: string =  getLocalValue("theme")
+  ? getLocalValue("theme")
+  : "light";
+  const lastVisitedLocalStorage: string[] = getLocalValue("lastVisited")
+  ? getLocalValue("lastVisited")
+  : [];
   const [lastVisited, setLastVisited] = useState(lastVisitedLocalStorage);
   const [theme, setTheme] = useState(themeLocalStorage);
   const [transitions, setTransitions] = useState(false);
   const [borders, setBorders] = useState(null);
 
   useEffect(() => {
-    const properties = palletes[theme];
+    const properties: ThemeInterface = palletes[theme];
     for (const [key, value] of Object.entries(properties)) {
       document.documentElement.style.setProperty(key, value);
     }
@@ -35,7 +37,7 @@ export function GlobalProvider(props) {
       );
     }
   }, [transitions]);
-
+  
   const darkModeHandler = () => {
     const _theme = theme === "light" ? "dark" : "light";
     setTheme(_theme);
@@ -43,7 +45,7 @@ export function GlobalProvider(props) {
     setLocalValue("theme", _theme);
   };
 
-  const updateLastVisited = (code, history) => {
+  const updateLastVisited = (code: string, history: any) => {
     const _lastVisited = reformLastVisited(code);
     setLastVisited((prev) => [..._lastVisited]);
     removeLocalValue("lastVisited");

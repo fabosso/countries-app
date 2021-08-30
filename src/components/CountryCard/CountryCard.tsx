@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export const CountryCard = ({ country }: { country: any }): any => {
   
-  const { updateLastVisited, theme } = useGlobal();
+  const { updateLastVisited, theme }:any = useGlobal();
   const [imageLoaded, setImageLoaded] = useState(false);
   const history = useHistory();
 

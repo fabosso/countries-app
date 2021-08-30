@@ -1,5 +1,4 @@
 import { Search } from "../../components/Search/Search";
-
 import { FlagGrid } from "../../components/FlagGrid/FlagGrid";
 import { FilterBySelector } from "../../components/FilterBySelector/FilterBySelector";
 import styles from "./styles.module.scss";
@@ -21,11 +20,17 @@ export const Home = () => {
             resetSelectValue={resetSelectValue}
           />
         </div>
-        <FlagGrid
-          countries={countries}
-          wordSearch={search.value}
-          region={select.selectedValue}
-        />
+        {!countries?.length ? (
+          <div className={styles.spinner_content}>
+          <div className={styles.spinner}></div>
+          </div>
+        ) : (
+          <FlagGrid
+            countries={countries}
+            wordSearch={search.value}
+            region={select.selectedValue}
+          />
+        )}
       </div>
     </>
   );

@@ -6,11 +6,10 @@ export const FilterBySelector = ({
   select,
   resetSelectValue,
   resetSearchValue,
-}:any) => {
+}: any) => {
   const [clicked, setClicked] = useState(false);
   const { values: regions, selectedValue } = select;
-  const onClick = (event:any):void => {
-
+  const onClick = (event: any): void => {
     select.onChange(event);
     setClicked(!clicked);
   };
@@ -34,12 +33,10 @@ export const FilterBySelector = ({
             ? getKeyByValue(regions, selectedValue)
             : "Filter by Region"}
         </p>
-
-        
       </div>
       <div
         className={styles.select_list}
-        style={{ display: clicked ?"block":"none" }}
+        style={{ display: clicked ? "block" : "none" }}
       >
         <ul className={styles.select_list__content}>
           {Object.keys(regions).map((name: string, index: number) => (

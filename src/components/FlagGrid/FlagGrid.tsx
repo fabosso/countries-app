@@ -16,11 +16,8 @@ export const FlagGrid = ({ countries, wordSearch, region }:any) => {
     );
   }, [countries, wordSearch, region, setCountriesList]);
 
-  useEffect(() => {
-    if (countries) {
-      filterCountries();
-    }
-  }, [filterCountries, countries]);
+  useEffect(() => filterCountries(), [filterCountries]);
+
   if (!countriesList.length) {
     return (
       <div className={styles.container}>
