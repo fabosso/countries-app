@@ -27,6 +27,7 @@ export const Home = ():JSX.Element => {
           <FilterBySelector
             select={select}
             resetSearchValue={resetSearchValue}
+            resetSelectValue = { resetSelectValue }
           />
         </div>
         {!countries?.length ? (

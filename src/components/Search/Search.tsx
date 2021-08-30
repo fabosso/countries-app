@@ -5,7 +5,6 @@ import styles from "./styles.module.scss";
 
 export const Search = ({ search, resetSelectValue }:any):JSX.Element => {
   const onChange = (event:InputEvent) => {
-    resetSelectValue();
     search.onChange(event);
   };
   return (
