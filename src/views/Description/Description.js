@@ -11,14 +11,15 @@ import { useGlobal } from "../../context/globalContext";
 import { palletes } from "../../utils/palletes";
 
 export const Description = (props) => {
+  const { setBorders, theme } = useGlobal();
   const {
     country: { flag, name },
   } = useDescription();
   const history = useHistory();
   const backHandler = () => {
     history.push("/");
+    setBorders(null);
   };
-  const { theme } = useGlobal();
   const [imageLoaded, setImageLoaded] = useState(false);
   const handleImageLoad = () => {
     setImageLoaded(true);
