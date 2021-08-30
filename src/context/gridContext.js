@@ -5,7 +5,7 @@ import { useGlobal } from "./globalContext";
 import { regions } from "../views/Home/Home.constants";
 import { useSelect } from "../hooks/useSelect";
 import { useField } from "../hooks/useField";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const gridContext = createContext();
 
@@ -17,12 +17,6 @@ export function GridProvider(props) {
   });
   const { setTransitions } = useGlobal();
 
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
   useEffect(() => {
     getCountries();
     setTransitions(true);
@@ -32,10 +26,8 @@ export function GridProvider(props) {
     <gridContext.Provider
       value={{
         countries,
-        imageLoaded,
         search,
         select,
-        handleImageLoad,
         resetSearchValue,
         resetSelectValue,
       }}
