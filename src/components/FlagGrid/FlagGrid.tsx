@@ -3,9 +3,8 @@ import { CountryCard } from "../CountryCard/CountryCard";
 import styles from "./styles.module.scss";
 import { useEffect, useState, useCallback } from "react";
 
-export const FlagGrid = ({ countries, wordSearch, region }:any) => {
+export const FlagGrid = ({ countries, wordSearch, region }: any) => {
   const [countriesList, setCountriesList] = useState(Array(20).fill(null));
-
   const filterCountries = useCallback(() => {
     setCountriesList(
       filterCountryOrRegion({
@@ -21,7 +20,7 @@ export const FlagGrid = ({ countries, wordSearch, region }:any) => {
   if (!countriesList.length) {
     return (
       <div className={styles.container}>
-        <h1> Country not found</h1>
+        <h1>Country not found</h1>
       </div>
     );
   }

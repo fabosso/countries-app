@@ -1,14 +1,12 @@
 import styles from "./styles.module.scss";
 import { useHistory } from "react-router-dom";
 import { CountryCardLoader } from "./CountryCardLoader";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Skeleton from "react-loading-skeleton";
 import { useGlobal } from "../../context/globalContext";
-import { palletes } from "../../utils/palletes";
 import { useState } from "react";
 
 export const CountryCard = ({ country }: { country: any }): any => {
-  
-  const { updateLastVisited, theme }:any = useGlobal();
+  const { updateLastVisited }: any = useGlobal();
   const [imageLoaded, setImageLoaded] = useState(false);
   const history = useHistory();
 
@@ -19,26 +17,13 @@ export const CountryCard = ({ country }: { country: any }): any => {
     setImageLoaded(true);
   };
 
-  if (!country)
-    return (
-      <SkeletonTheme
-        color={palletes[theme]["--skeleton-color"]}
-        highlightColor={palletes[theme]["--shine-color"]}
-      >
-        <CountryCardLoader />
-      </SkeletonTheme>
-    );
+  if (!country) return <CountryCardLoader />;
 
   return (
     <div className={styles.container} onClick={handleClick}>
       <div className={styles.wrapper__img}>
         {!imageLoaded && (
-          <SkeletonTheme
-            color={palletes[theme]["--skeleton-color"]}
-            highlightColor={palletes[theme]["--shine-color"]}
-          >
-            <Skeleton className={styles.country_img} height={160} />
-          </SkeletonTheme>
+          <Skeleton className={styles.country_img} height={160} />
         )}
         <img
           className={styles.country_img}

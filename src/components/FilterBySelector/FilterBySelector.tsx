@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
-import React, { useState } from "react";
+import { useState } from "react";
 import { getKeyByValue } from "../../utils/getKeyByValue";
+import { ChevronDownOutline } from "react-ionicons";
 
 export const FilterBySelector = ({
   select,
@@ -33,6 +34,7 @@ export const FilterBySelector = ({
             ? getKeyByValue(regions, selectedValue)
             : "Filter by Region"}
         </p>
+        <ChevronDownOutline height="16px" width="16px" color="inherit" />
       </div>
       <div
         className={styles.select_list}
