@@ -10,13 +10,13 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useGlobal } from "../../context/globalContext";
 import { palletes } from "../../utils/palletes";
 
-export const Description = (props) => {
-  const { setBorders, theme } = useGlobal();
+export const Description = () => {
+  const { setBorders, theme }: any = useGlobal();
   const {
     country: { flag, name },
-  } = useDescription();
+  }: any = useDescription();
   const history = useHistory();
-  const backHandler = () => {
+  const backHandler = (): void => {
     history.push("/");
     setBorders(null);
   };

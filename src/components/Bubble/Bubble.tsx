@@ -3,9 +3,8 @@ import { BASE_URL } from "../../services/api";
 import styles from "./styles.module.scss";
 import { useGlobal } from "../../context/globalContext";
 
-const Bubble = (props) => {
-  const { countryCode } = props;
-  const { updateLastVisited } = useGlobal();
+const Bubble = ({ countryCode }: { countryCode: string }) => {
+  const { updateLastVisited }: any = useGlobal();
   const history = useHistory();
   const handleClick = () => {
     if (history.location.pathname !== `/description/${countryCode}`) {

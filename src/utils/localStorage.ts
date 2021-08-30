@@ -23,7 +23,7 @@ export const removeLocalValue = (name: string): void => {
   } catch {}
 };
 
-export const reformLastVisited = (nextCountry:any):any => {
+export const reformLastVisited = (nextCountry:string) : string[] => {
   const _lastVisited = getLocalValue("lastVisited");
   if (!_lastVisited) return [nextCountry];
   if (_lastVisited.includes(nextCountry)) {

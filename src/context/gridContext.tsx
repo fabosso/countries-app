@@ -7,15 +7,15 @@ import { useSelect } from "../hooks/useSelect";
 import { useField } from "../hooks/useField";
 import { useEffect } from "react";
 
-const gridContext = createContext();
+const gridContext: any = createContext(null);
 
-export function GridProvider(props) {
-  const { resetSearchValue, ...search } = useField("text");
+export function GridProvider(props: any) {
+  const { resetSearchValue, ...search } = useField({ type: "text" });
   const { resetSelectValue, ...select } = useSelect({ initialState: regions });
   const { value: countries, doFetch: getCountries } = useFetch({
     fetch: getAll,
   });
-  const { setTransitions } = useGlobal();
+  const { setTransitions }: any = useGlobal();
 
   useEffect(() => {
     getCountries();

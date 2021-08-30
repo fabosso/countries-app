@@ -1,9 +1,11 @@
 import Skeleton from "react-loading-skeleton";
 
-const Detail = (props) => {
-  const {
-    detail: { title, content },
-  } = props;
+type DetailType = {
+  title: string;
+  content: string;
+};
+
+const Detail = ({ detail: { title, content } }: { detail: DetailType }) => {
   return (
     <p>
       <strong> {content ? title + ":" : <Skeleton width={100} />} </strong>

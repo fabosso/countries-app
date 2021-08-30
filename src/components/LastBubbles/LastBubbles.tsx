@@ -2,12 +2,12 @@ import { useGlobal } from "../../context/globalContext";
 import Bubble from "../Bubble/Bubble";
 import styles from "./styles.module.scss";
 
-const LastBubbles = (props) => {
-  const { lastVisited } = useGlobal();
+const LastBubbles = () => {
+  const { lastVisited }: any = useGlobal();
 
   return (
     <div className={styles.container}>
-      {lastVisited.map((country) => (
+      {lastVisited.map((country: string) => (
         <Bubble countryCode={country} key={country} />
       ))}
     </div>

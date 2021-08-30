@@ -1,9 +1,7 @@
 import styles from "./styles.module.scss";
 import { ArrowBackSharp } from "react-ionicons";
 
-const BackBtn = (props) => {
-  const { backHandler } = props;
-
+const BackBtn = ({ backHandler }: { backHandler: () => void }) => {
   return (
     <button className={styles.button} onClick={backHandler}>
       <span>

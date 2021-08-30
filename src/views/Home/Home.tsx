@@ -8,7 +8,7 @@ import { palletes } from "../../utils/palletes";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { useGlobal } from "../../context/globalContext";
 export const Home = () => {
-  const { countries, search, select, resetSearchValue, resetSelectValue } =
+  const { countries, search, select, resetSearchValue, resetSelectValue }: any =
     useGrid();
   const { theme }: any = useGlobal();
   return (

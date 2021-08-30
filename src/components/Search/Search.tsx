@@ -2,7 +2,7 @@ import { SearchOutline } from "react-ionicons";
 import { InputEvent } from "../../types/EventTypes";
 import styles from "./styles.module.scss";
 
-export const Search = ({ search, resetSelectValue }: any): JSX.Element => {
+export const Search = ({ search }: any): JSX.Element => {
   const onChange = (event: InputEvent) => {
     search.onChange(event);
   };

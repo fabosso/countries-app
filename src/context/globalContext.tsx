@@ -11,12 +11,12 @@ import { ThemeInterface } from "../interfaces/Theme.interface";
 const globalContext: any = createContext(null);
 
 export function GlobalProvider(props: any) {
-  const themeLocalStorage: string =  getLocalValue("theme")
-  ? getLocalValue("theme")
-  : "light";
+  const themeLocalStorage: string = getLocalValue("theme")
+    ? getLocalValue("theme")
+    : "light";
   const lastVisitedLocalStorage: string[] = getLocalValue("lastVisited")
-  ? getLocalValue("lastVisited")
-  : [];
+    ? getLocalValue("lastVisited")
+    : [];
   const [lastVisited, setLastVisited] = useState(lastVisitedLocalStorage);
   const [theme, setTheme] = useState(themeLocalStorage);
   const [transitions, setTransitions] = useState(false);
@@ -37,7 +37,7 @@ export function GlobalProvider(props: any) {
       );
     }
   }, [transitions]);
-  
+
   const darkModeHandler = () => {
     const _theme = theme === "light" ? "dark" : "light";
     setTheme(_theme);
