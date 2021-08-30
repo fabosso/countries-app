@@ -2,18 +2,21 @@ import styles from "./styles.module.scss";
 import { useHistory } from "react-router-dom";
 import { CountryCardLoader } from "./CountryCardLoader";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-
 import { useGlobal } from "../../context/globalContext";
 import { palletes } from "../../utils/palletes";
-import { useGrid } from "../../context/gridContext";
+import { useState } from "react";
 
 export const CountryCard = ({ country }) => {
+  const { updateLastVisited, theme } = useGlobal();
+  const [imageLoaded, setImageLoaded] = useState(false);
   const history = useHistory();
+
   const handleClick = () => {
-    history.push(`description/${country.alpha3Code}`);
+    updateLastVisited(country.alpha3Code, history);
   };
-  const { theme } = useGlobal();
-  const { imageLoaded, handleImageLoad } = useGrid();
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
 
   if (!country)
     return (

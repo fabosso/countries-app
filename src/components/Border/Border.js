@@ -4,12 +4,11 @@ import { useGlobal } from "../../context/globalContext";
 
 const Border = (props) => {
   const { border } = props;
-  const { setBorders } = useGlobal();
+  const { updateLastVisited } = useGlobal();
   const history = useHistory();
 
   const handleClick = () => {
-    history.push(`${border.code}`);
-    setBorders(null); // null signalizes a temporal lack of downloaded data, NOT a lack of borders
+    updateLastVisited(border.code, history);
   };
 
   return (

@@ -8,7 +8,7 @@ const LastBubbles = (props) => {
   return (
     <div className={styles.container}>
       {lastVisited.map((country) => (
-        <Bubble country={country} key={country} />
+        <Bubble countryCode={country} key={country} />
       ))}
     </div>
   );
