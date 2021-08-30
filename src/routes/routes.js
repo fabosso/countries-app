@@ -1,20 +1,22 @@
 import { Home } from "../views/Home/Home";
 import { Description } from "../views/Description/Description";
 import { Navbar } from "../layout/Navbar";
-import { CountriesProvider } from "../context/countriesContext";
+import { DescriptionProvider } from "../context/descriptionContext";
 import { NotFound } from "../components/NotFound/NotFound";
+import { GridProvider } from "../context/gridContext";
 export const routes = [
   {
     path: "/",
     component: Home,
     layout: Navbar,
+    provider: GridProvider,
     exact: true,
   },
   {
     path: "/description/:prefix",
     component: Description,
     layout: Navbar,
-    provider: CountriesProvider,
+    provider: DescriptionProvider,
     exact: true,
   },
   {

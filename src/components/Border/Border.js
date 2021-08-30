@@ -1,10 +1,10 @@
 import styles from "./styles.module.scss";
 import { useHistory } from "react-router-dom";
-import { useCountries } from "../../context/countriesContext";
+import { useGlobal } from "../../context/globalContext";
 
 const Border = (props) => {
   const { border } = props;
-  const { setBorders } = useCountries();
+  const { setBorders } = useGlobal();
   const history = useHistory();
 
   const handleClick = () => {

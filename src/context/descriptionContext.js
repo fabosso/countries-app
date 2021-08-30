@@ -1,11 +1,13 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { getNameByCode, getInfoByCode } from "../services/api";
 import { useParams } from "react-router-dom";
+import { useGlobal } from "./globalContext";
 
-const countriesContext = createContext();
+const descriptionContext = createContext();
 
-export function CountriesProvider(props) {
-  const [borders, setBorders] = useState(null);
+export function DescriptionProvider(props) {
+  const { setBorders } = useGlobal();
+
   const [country, setCountry] = useState({
     currencies: [],
     languages: [],
@@ -50,20 +52,15 @@ export function CountriesProvider(props) {
       // setting borders to [] means that the country is resolved to have no borders.
       setBorders([]);
     }
-  }, [country.borders]);
+  }, [country.borders, setBorders]);
 
-  return (
-    <countriesContext.Provider
-      value={{ borders, country, setBorders }}
-      {...props}
-    />
-  );
+  return <descriptionContext.Provider value={{ country }} {...props} />;
 }
 
-export function useCountries() {
-  const context = useContext(countriesContext);
+export function useDescription() {
+  const context = useContext(descriptionContext);
   if (!context) {
-    throw new Error("useCountries call is not inside a CountriesProvider");
+    throw new Error("useDescription call is not inside a DescriptionProvider");
   }
   return context;
 }

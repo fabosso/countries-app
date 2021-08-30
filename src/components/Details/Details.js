@@ -1,9 +1,9 @@
-import { useCountries } from "../../context/countriesContext";
+import { useDescription } from "../../context/descriptionContext";
 import Detail from "../Detail/Detail";
 import styles from "./styles.module.scss";
 
 const Details = (props) => {
-  const { country } = useCountries();
+  const { country } = useDescription();
 
   const details = [
     {

@@ -3,22 +3,22 @@ import Borders from "../../components/Borders/Borders";
 import Details from "../../components/Details/Details";
 import "../../assets/styles/Globals.scss";
 import styles from "./styles.module.scss";
-import { useCountries } from "../../context/countriesContext";
+import { useDescription } from "../../context/descriptionContext";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { useTheme } from "../../context/themeContext";
+import { useGlobal } from "../../context/globalContext";
 import { palletes } from "../../utils/palletes";
 
 export const Description = (props) => {
   const {
     country: { flag, name },
-  } = useCountries();
+  } = useDescription();
   const history = useHistory();
   const backHandler = () => {
     history.push("/");
   };
-  const { theme } = useTheme();
+  const { theme } = useGlobal();
   const [imageLoaded, setImageLoaded] = useState(false);
   const handleImageLoad = () => {
     setImageLoaded(true);

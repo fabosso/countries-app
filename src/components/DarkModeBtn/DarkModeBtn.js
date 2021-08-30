@@ -1,9 +1,9 @@
-import { useTheme } from "../../context/themeContext";
+import { useGlobal } from "../../context/globalContext";
 import styles from "./styles.module.scss";
 import { MoonOutline } from "react-ionicons";
 
 const DarkModeBtn = (props) => {
-  const { darkModeHandler } = useTheme();
+  const { darkModeHandler } = useGlobal();
   return (
     <span className={styles.button} onClick={darkModeHandler}>
       <span>
