@@ -1,8 +1,9 @@
+import React from "react";
 import DarkModeBtn from "../DarkModeBtn/DarkModeBtn";
 import LastBubbles from "../LastBubbles/LastBubbles";
 import styles from "./styles.module.scss";
 
-export const Header = ({ children }: { children: any }) => {
+export const Header = ({ children }: { children: React.ReactElement }):React.ReactElement => {
   return (
     <>
       <div className={styles.header}>
