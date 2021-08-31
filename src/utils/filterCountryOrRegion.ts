@@ -12,7 +12,9 @@ export const filterCountryOrRegion = ({
     // early return: no word or region selected
     if (!word && !region) return data;
 
-    const nameMatching = data.name.toLowerCase().includes(word.toLowerCase());
+    const nameMatching = data.name
+      .toLowerCase()
+      .includes(word.trim().toLowerCase());
     const regionMatching =
       !region || data.region.toLowerCase() === region.toLowerCase();
     if (nameMatching && regionMatching) {
