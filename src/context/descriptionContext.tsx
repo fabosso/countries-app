@@ -8,7 +8,7 @@ import { alpha3Codes } from "../utils/alpha3Codes";
 const descriptionContext: any = createContext(null);
 
 export function DescriptionProvider(props: any) {
-  const { setBorders } = useGlobal();
+  const { setBorders, setTransitions } = useGlobal();
 
   const [country, setCountry] = useState({
     currencies: [],
@@ -37,7 +37,8 @@ export function DescriptionProvider(props: any) {
       }
     }
     fetchCountryInfo();
-  }, [prefix, countryFound]);
+    setTransitions(true);
+  }, [prefix, countryFound, setTransitions]);
 
   useEffect(() => {
     const codeBorders: any = country.borders;
