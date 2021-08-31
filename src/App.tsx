@@ -1,13 +1,14 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { routes } from "./routes/routes";
+import { RouteInterface } from "./interfaces/Route.interface";
 import { GlobalProvider } from "./context/globalContext";
 
-function App():JSX.Element {
+function App(): JSX.Element {
   return (
     <GlobalProvider>
       <BrowserRouter>
         <Switch>
-          {routes.map((route:any, index) => (
+          {routes.map((route: RouteInterface, index) => (
             <Route
               key={index}
               path={route.path}

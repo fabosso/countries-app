@@ -2,10 +2,10 @@ import Skeleton from "react-loading-skeleton";
 import { useGlobal } from "../../context/globalContext";
 import Border from "../Border/Border";
 import styles from "./styles.module.scss";
-import { BorderType } from "../Border/Border.type";
+import { BorderItem } from "../../interfaces/Global.interface";
 
 const Borders = () => {
-  const { borders }: any = useGlobal();
+  const { borders } = useGlobal();
   return (
     <div className={styles.container}>
       <strong>
@@ -17,7 +17,7 @@ const Borders = () => {
           ? /* Borders being null means that it's still parsing data... */
             ""
           : borders.length !== 0
-          ? borders.map((border: BorderType) => (
+          ? borders.map((border: BorderItem) => (
               <Border border={border} key={border.code} />
             ))
           : /* Borders having 0 length (empty array) means that the country doesn't have any borders */

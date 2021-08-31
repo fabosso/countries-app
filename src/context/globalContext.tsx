@@ -6,7 +6,12 @@ import {
   removeLocalValue,
   reformLastVisited,
 } from "../utils/localStorage";
+
 import { ThemeInterface } from "../interfaces/Theme.interface";
+import {
+  updateLastVisitedType,
+  useGlobalTypes,
+} from "../interfaces/Global.interface";
 
 const globalContext: any = createContext(null);
 
@@ -45,7 +50,7 @@ export function GlobalProvider(props: any) {
     setLocalValue("theme", _theme);
   };
 
-  const updateLastVisited = (code: string, history: any) => {
+  const updateLastVisited: updateLastVisitedType = (code, history) => {
     const _lastVisited = reformLastVisited(code);
     setLastVisited((prev) => [..._lastVisited]);
     removeLocalValue("lastVisited");
@@ -53,6 +58,10 @@ export function GlobalProvider(props: any) {
     setBorders(null); // null signalizes a temporal lack of downloaded data, NOT a lack of borders
     history.push(`/description/${code}`);
   };
+
+  useEffect(() => {
+    console.log(borders);
+  }, [borders]);
 
   return (
     <globalContext.Provider
@@ -71,7 +80,7 @@ export function GlobalProvider(props: any) {
 }
 
 export function useGlobal() {
-  const context = useContext(globalContext);
+  const context: useGlobalTypes = useContext(globalContext);
   if (!context) {
     throw new Error("useGlobal call is not inside a GlobalProvider");
   }

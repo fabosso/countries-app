@@ -10,7 +10,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useGlobal } from "../../context/globalContext";
 import { palletes } from "../../utils/palletes";
 
-export const Description = () => {
+export const Description = (): JSX.Element => {
   const { setBorders, theme }: any = useGlobal();
   const {
     country: { flag, name },

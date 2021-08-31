@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import Skeleton from "react-loading-skeleton";
 
-export const CountryCardLoader = ({ country }:any):any => {
+export const CountryCardLoader = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper__img}>

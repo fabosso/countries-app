@@ -5,8 +5,19 @@ import Skeleton from "react-loading-skeleton";
 import { useGlobal } from "../../context/globalContext";
 import { useState } from "react";
 
-export const CountryCard = ({ country }: { country: any }): any => {
-  const { updateLastVisited }: any = useGlobal();
+type CountryCardProps = {
+  country: {
+    alpha3Code: string;
+    capital: string;
+    flag: string;
+    name: string;
+    population: number;
+    region: string;
+  };
+};
+
+export const CountryCard = ({ country }: CountryCardProps) => {
+  const { updateLastVisited } = useGlobal();
   const [imageLoaded, setImageLoaded] = useState(false);
   const history = useHistory();
 

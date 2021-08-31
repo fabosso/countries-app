@@ -1,9 +1,10 @@
 import { useDescription } from "../../context/descriptionContext";
 import Detail from "../Detail/Detail";
 import styles from "./styles.module.scss";
+import { CountryType } from "../../interfaces/Description.interface";
 
-const Details = (props) => {
-  const { country } = useDescription();
+const Details = () => {
+  const { country }: { country: CountryType } = useDescription();
 
   const details = [
     {

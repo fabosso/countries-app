@@ -2,11 +2,12 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { getNameByCode, getInfoByCode } from "../services/api";
 import { useParams } from "react-router-dom";
 import { useGlobal } from "./globalContext";
+import { useDescriptionTypes } from "../interfaces/Description.interface";
 
-const descriptionContext : any = createContext(null);
+const descriptionContext: any = createContext(null);
 
-export function DescriptionProvider(props:any) {
-  const { setBorders } : any = useGlobal();
+export function DescriptionProvider(props: any) {
+  const { setBorders } = useGlobal();
 
   const [country, setCountry] = useState({
     currencies: [],
@@ -19,10 +20,10 @@ export function DescriptionProvider(props:any) {
     region: "",
     subregion: "",
     population: null,
-    borders: [""],
+    borders: [],
   });
 
-  const { prefix }:{prefix:string} = useParams();
+  const { prefix }: { prefix: string } = useParams();
 
   useEffect(() => {
     async function fetchCountryInfo() {
@@ -37,29 +38,29 @@ export function DescriptionProvider(props:any) {
 
   useEffect(() => {
     if (country.borders.length !== 0) {
-      country.borders.forEach(async (code) => {
-      const name = await getNameByCode(code);
-      if (name) {
-        setBorders((prev: Object[]) => {
-          if (!prev) {
-            return [{ name: name, code: code }];
-          } else {
-            return [...prev, { name: name, code: code }];
-          }
-        });
-      }
-    });
-  } else {
-    // setting borders to [] means that the country is resolved to have no borders.
-    setBorders([]);
-  }
+      country.borders.forEach(async (code: string) => {
+        const name: string = await getNameByCode(code);
+        if (name) {
+          setBorders((prev) => {
+            if (!prev) {
+              return [{ name: name, code: code }];
+            } else {
+              return [...prev, { name: name, code: code }];
+            }
+          });
+        }
+      });
+    } else {
+      // setting borders to [] means that the country is resolved to have no borders.
+      setBorders(() => []);
+    }
   }, [country.borders, setBorders]);
 
   return <descriptionContext.Provider value={{ country }} {...props} />;
 }
 
 export function useDescription() {
-  const context = useContext(descriptionContext);
+  const context: useDescriptionTypes = useContext(descriptionContext);
   if (!context) {
     throw new Error("useDescription call is not inside a DescriptionProvider");
   }

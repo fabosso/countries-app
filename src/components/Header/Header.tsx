@@ -2,7 +2,7 @@ import DarkModeBtn from "../DarkModeBtn/DarkModeBtn";
 import LastBubbles from "../LastBubbles/LastBubbles";
 import styles from "./styles.module.scss";
 
-export const Header = ({ children }) => {
+export const Header = ({ children }: { children: any }) => {
   return (
     <>
       <div className={styles.header}>

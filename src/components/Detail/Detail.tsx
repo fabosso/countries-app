@@ -2,7 +2,7 @@ import Skeleton from "react-loading-skeleton";
 
 type DetailType = {
   title: string;
-  content: string;
+  content: string | null;
 };
 
 const Detail = ({ detail: { title, content } }: { detail: DetailType }) => {

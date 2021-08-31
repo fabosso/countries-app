@@ -1,10 +1,10 @@
 import styles from "./styles.module.scss";
 import { useHistory } from "react-router-dom";
 import { useGlobal } from "../../context/globalContext";
-import { BorderType } from "./Border.type";
+import { BorderItem } from "../../interfaces/Global.interface";
 
-const Border = ({ border }: { border: BorderType }) => {
-  const { updateLastVisited }: any = useGlobal();
+const Border = ({ border }: { border: BorderItem }) => {
+  const { updateLastVisited } = useGlobal();
   const history = useHistory();
 
   const handleClick = () => {

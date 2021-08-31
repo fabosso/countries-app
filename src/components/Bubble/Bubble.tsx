@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import { useGlobal } from "../../context/globalContext";
 
 const Bubble = ({ countryCode }: { countryCode: string }) => {
-  const { updateLastVisited }: any = useGlobal();
+  const { updateLastVisited } = useGlobal();
   const history = useHistory();
   const handleClick = () => {
     if (history.location.pathname !== `/description/${countryCode}`) {

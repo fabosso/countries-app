@@ -7,7 +7,7 @@ import { useGrid } from "../../context/gridContext";
 import { palletes } from "../../utils/palletes";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { useGlobal } from "../../context/globalContext";
-export const Home = () => {
+export const Home = (): JSX.Element => {
   const { countries, search, select, resetSearchValue, resetSelectValue }: any =
     useGrid();
   const { theme }: any = useGlobal();

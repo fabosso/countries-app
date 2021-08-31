@@ -3,11 +3,17 @@ import { useState } from "react";
 import { getKeyByValue } from "../../utils/getKeyByValue";
 import { ChevronDownOutline } from "react-ionicons";
 
+type FilterBySelectorProps = {
+  select: any;
+  resetSelectValue: any;
+  resetSearchValue: any;
+};
+
 export const FilterBySelector = ({
   select,
   resetSelectValue,
   resetSearchValue,
-}: any) => {
+}: FilterBySelectorProps) => {
   const [clicked, setClicked] = useState(false);
   const { values: regions, selectedValue } = select;
   const onClick = (event: any): void => {
