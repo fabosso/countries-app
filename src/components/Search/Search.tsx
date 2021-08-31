@@ -2,8 +2,15 @@ import { SearchOutline } from "react-ionicons";
 import { InputEvent } from "../../types/EventTypes";
 import styles from "./styles.module.scss";
 
+<<<<<<< Updated upstream
 export const Search = ({ search }: any): JSX.Element => {
   const onChange = (event: InputEvent) => {
+=======
+
+
+export const Search = ({ search }:any):JSX.Element => {
+  const onChange = (event:InputEvent) => {
+>>>>>>> Stashed changes
     search.onChange(event);
   };
   return (

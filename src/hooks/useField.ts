@@ -1,12 +1,12 @@
 import { useState } from "react";
-
+import { InputEvent } from "../types/EventTypes";
 type fieldParams = {
   type: string;
 };
 type useFieldType = {
   type: string;
   value: any;
-  onChange: (event: any) => void;
+  onChange: (event: InputEvent) => void;
   resetSearchValue: () => void;
 };
 

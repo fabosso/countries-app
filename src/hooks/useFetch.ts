@@ -7,6 +7,7 @@ type useFetchType = {
   doFetch:()=>Promise<any>
 }
 export const useFetch = ({ fetch }:fetchParams):useFetchType => {
+  
   const [value, setValue] = useState<any>(null);
   const doFetch = useCallback(async() => {
     const data = await fetch();
