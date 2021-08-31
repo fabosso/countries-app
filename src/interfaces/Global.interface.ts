@@ -5,7 +5,7 @@ export type BorderItem = {
   name: string;
 };
 
-type callBackFcn = (borders: BorderItem[]) => BorderItem[];
+type callBackFcn = (borders: BorderItem[]) => BorderItem[] | null;
 
 export type updateLastVisitedType = (
   code: string,
@@ -18,6 +18,6 @@ export interface useGlobalTypes {
   lastVisited: string[];
   updateLastVisited: updateLastVisitedType;
   borders: BorderItem[] | null;
-  setBorders: (callback: callBackFcn) => BorderItem[] | null;
+  setBorders: (callback: callBackFcn | null | never[]) => BorderItem[];
   theme: string;
 }

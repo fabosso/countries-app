@@ -22,7 +22,7 @@ export type CountryType = {
   region: string;
   subregion: string;
   population: null | number;
-  borders: string[];
+  borders: null | string[];
 };
 
 export interface useDescriptionTypes {
