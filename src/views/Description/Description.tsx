@@ -9,11 +9,13 @@ import { useHistory } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useGlobal } from "../../context/globalContext";
 import { palletes } from "../../utils/palletes";
+import { NotFound } from "../../components/NotFound/NotFound";
 
 export const Description = (): JSX.Element => {
   const { setBorders, theme }: any = useGlobal();
   const {
     country: { flag, name },
+    countryFound,
   }: any = useDescription();
   const history = useHistory();
   const backHandler = (): void => {
@@ -25,30 +27,34 @@ export const Description = (): JSX.Element => {
     setImageLoaded(true);
   };
 
-  return (
-    <>
-      <div className={styles.container}>
-        <BackBtn backHandler={backHandler} />
-        <div className={styles.wrapper}>
-          {!imageLoaded && <div className={styles.imgSkeleton}></div>}
-          <img
-            src={flag}
-            alt={name}
-            onLoad={handleImageLoad}
-            style={imageLoaded ? { display: "initial" } : { display: "none" }}
-          />
-          <div className={styles.info}>
-            <SkeletonTheme
-              color={palletes[theme]["--skeleton-color"]}
-              highlightColor={palletes[theme]["--shine-color"]}
-            >
-              <h2>{name || <Skeleton />}</h2>
-              <Details />
-              <Borders />
-            </SkeletonTheme>
+  if (countryFound) {
+    return (
+      <>
+        <div className={styles.container}>
+          <BackBtn backHandler={backHandler} />
+          <div className={styles.wrapper}>
+            {!imageLoaded && <div className={styles.imgSkeleton}></div>}
+            <img
+              src={flag}
+              alt={name}
+              onLoad={handleImageLoad}
+              style={imageLoaded ? { display: "initial" } : { display: "none" }}
+            />
+            <div className={styles.info}>
+              <SkeletonTheme
+                color={palletes[theme]["--skeleton-color"]}
+                highlightColor={palletes[theme]["--shine-color"]}
+              >
+                <h2>{name || <Skeleton />}</h2>
+                <Details />
+                <Borders />
+              </SkeletonTheme>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  } else {
+    return <NotFound />;
+  }
 };
