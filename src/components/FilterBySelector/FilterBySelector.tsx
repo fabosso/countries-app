@@ -22,7 +22,6 @@ export const FilterBySelector = ({
   };
 
   const resetValues = (): void => {
-    resetSearchValue();
     resetSelectValue();
     setClicked(!clicked);
   };
@@ -57,7 +56,7 @@ export const FilterBySelector = ({
             </li>
           ))}
           <li className={styles.select_all} onClick={resetValues}>
-            <p>All countries</p>
+            <p>All</p>
           </li>
         </ul>
       </div>
