@@ -1,24 +1,15 @@
 import { useState } from "react";
-import { InputEvent } from "../types/EventTypes";
-
+import { RegionsType } from "../types/Regions.type";
+import { useSelectType } from "../types/Select.type";
 type selectParams = {
-  initialState: any;
-};
-type useSelectType = {
-  values: any;
-  selectedValue: any;
-  onChange: (event: InputEvent) => void;
-  resetSelectValue: () => void;
+  initialState: RegionsType;
 };
 
-export const useSelect = ({
-  initialState = [],
-}: selectParams): useSelectType => {
-  
+export const useSelect = ({ initialState }: selectParams): useSelectType => {
   const values = initialState;
   const [selectedValue, setSelectedValue] = useState<string>("");
-  const onChange = (event: InputEvent): void => {
-    setSelectedValue(event.target.value);
+  const onChangeFilter = (regionName: string): void => {
+    setSelectedValue(regionName);
   };
   const resetSelectValue = (): void => {
     setSelectedValue("");
@@ -27,7 +18,7 @@ export const useSelect = ({
   return {
     values,
     selectedValue,
-    onChange,
+    onChangeFilter,
     resetSelectValue,
   };
 };
