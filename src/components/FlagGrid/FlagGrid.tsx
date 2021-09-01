@@ -2,8 +2,15 @@ import { filterCountryOrRegion } from "../../utils/filterCountryOrRegion";
 import { CountryCard } from "../CountryCard/CountryCard";
 import styles from "./styles.module.scss";
 import { useEffect, useState, useCallback } from "react";
+import { CountryCardType } from "../../types/CountryCard.type";
 
-export const FlagGrid = ({ countries, wordSearch, region }: any) => {
+type FlagGridProps = {
+  countries: CountryCardType[];
+  wordSearch: string;
+  region: string;
+};
+
+export const FlagGrid = ({ countries, wordSearch, region }: FlagGridProps) => {
   const [countriesList, setCountriesList] = useState(Array(20).fill(null));
   const filterCountries = useCallback(() => {
     setCountriesList(

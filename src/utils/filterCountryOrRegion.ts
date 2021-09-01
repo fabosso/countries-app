@@ -1,5 +1,7 @@
+import { CountryCardType } from "../types/CountryCard.type";
+
 type filterParams = {
-  countries: any;
+  countries: CountryCardType[];
   word: string;
   region: string;
 };
@@ -7,8 +9,8 @@ export const filterCountryOrRegion = ({
   countries,
   word = "",
   region = "",
-}: filterParams): any => {
-  return countries.filter((data: any, index: number): any => {
+}: filterParams) => {
+  return countries.filter((data: CountryCardType): CountryCardType | null => {
     // early return: no word or region selected
     if (!word && !region) return data;
 
