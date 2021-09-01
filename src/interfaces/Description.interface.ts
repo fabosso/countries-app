@@ -12,17 +12,17 @@ type LanguageType = {
 };
 
 export type CountryDescType = {
-  currencies: CurrencyType[];
-  languages: LanguageType[];
+  currencies: CurrencyType[] | null;
+  languages: LanguageType[] | null;
   flag: string;
   name: string;
-  nativeName: string;
-  topLevelDomain: string[];
-  capital: string;
-  region: string;
-  subregion: string;
-  population: null | number;
-  borders: null | string[];
+  nativeName: string | null;
+  topLevelDomain: string[] | null;
+  capital: string | null;
+  region: string | null;
+  subregion: string | null;
+  population: number | null;
+  borders: string[] | null;
 };
 
 export interface useDescriptionTypes {

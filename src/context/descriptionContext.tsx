@@ -10,15 +10,15 @@ import { alpha3Codes } from "../utils/alpha3Codes";
 import { ProviderProps } from "../types/ProviderProps.type";
 
 const emptyCountryDesc: CountryDescType = {
-  currencies: [],
-  languages: [],
+  currencies: null,
+  languages: null,
   flag: "",
   name: "",
-  nativeName: "",
-  topLevelDomain: [],
-  capital: "",
-  region: "",
-  subregion: "",
+  nativeName: null,
+  topLevelDomain: null,
+  capital: null,
+  region: null,
+  subregion: null,
   population: null,
   borders: null,
 };

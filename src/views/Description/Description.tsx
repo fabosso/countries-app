@@ -36,7 +36,7 @@ export const Description = () => {
             {!imageLoaded && <div className={styles.imgSkeleton}></div>}
             <img
               src={flag}
-              alt={name}
+              alt={name!}
               onLoad={handleImageLoad}
               style={imageLoaded ? { display: "initial" } : { display: "none" }}
             />

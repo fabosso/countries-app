@@ -34,7 +34,6 @@ export const FilterBySelector = ({
         }}
       >
         <p>
-          {" "}
           {selectedValue
             ? getKeyByValue(regions, selectedValue)
             : "Filter by Region"}
