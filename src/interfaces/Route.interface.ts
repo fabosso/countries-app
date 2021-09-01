@@ -2,7 +2,7 @@ import React from "react";
 
 export interface RouteInterface {
   path: string;
-  component: React.FC | any;
+  component: React.FC;
   layout: ({
     children,
   }: {
