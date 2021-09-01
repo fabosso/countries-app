@@ -6,16 +6,18 @@ import { regions } from "../views/Home/Home.constants";
 import { useSelect } from "../hooks/useSelect";
 import { useField } from "../hooks/useField";
 import { useEffect } from "react";
+import { useGridTypes } from "../interfaces/Grid.interface";
+import { ProviderProps } from "../types/ProviderProps.type";
 
-const gridContext: any = createContext(null);
+const gridContext = createContext<useGridTypes>(null!);
 
-export function GridProvider(props: any) {
+export function GridProvider({ children }: ProviderProps) {
   const { resetSearchValue, ...search } = useField({ type: "text" });
   const { resetSelectValue, ...select } = useSelect({ initialState: regions });
   const { value: countries, doFetch: getCountries } = useFetch({
     fetch: getAll,
   });
-  const { setTransitions }: any = useGlobal();
+  const { setTransitions } = useGlobal();
 
   useEffect(() => {
     getCountries();
@@ -31,13 +33,14 @@ export function GridProvider(props: any) {
         resetSearchValue,
         resetSelectValue,
       }}
-      {...props}
-    />
+    >
+      {children}
+    </gridContext.Provider>
   );
 }
 
 export function useGrid() {
-  const context = useContext(gridContext);
+  const context: useGridTypes = useContext(gridContext);
   if (!context) {
     throw new Error("useGrid call is not inside a GridProvider");
   }
