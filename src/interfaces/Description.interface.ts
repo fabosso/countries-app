@@ -11,7 +11,7 @@ type LanguageType = {
   nativeName: string;
 };
 
-export type CountryType = {
+export type CountryDescType = {
   currencies: CurrencyType[];
   languages: LanguageType[];
   flag: string;
@@ -26,5 +26,6 @@ export type CountryType = {
 };
 
 export interface useDescriptionTypes {
-  country: CountryType;
+  country: CountryDescType;
+  countryFound: boolean;
 }
