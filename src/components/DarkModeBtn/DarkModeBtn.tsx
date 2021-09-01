@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { MoonOutline } from "react-ionicons";
 
 const DarkModeBtn = () => {
-  const { darkModeHandler }: any = useGlobal();
+  const { darkModeHandler } = useGlobal();
   return (
     <span className={styles.button} onClick={darkModeHandler}>
       <span>
