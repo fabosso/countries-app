@@ -1,11 +1,17 @@
 import { SearchOutline } from "react-ionicons";
-import { InputEvent } from "../../types/EventTypes";
+import { InputEvent } from "../../types/EventTypes.type";
 import styles from "./styles.module.scss";
+import { SearchType } from "../../types/Search.type";
 
-export const Search = ({ search }: any): JSX.Element => {
-  const onChange = (event: InputEvent) => {
-    search.onChange(event);
+type searchProps = {
+  search: SearchType;
+};
+
+export const Search = ({ search }: searchProps) => {
+  const handleChange = (event: InputEvent) => {
+    search.handleChange(event.target.value);
   };
+
   return (
     <div className={styles.container}>
       <div className={styles.icon}>
@@ -14,7 +20,9 @@ export const Search = ({ search }: any): JSX.Element => {
       <input
         placeholder="Search for a country..."
         className={styles.search}
-        {...{ ...search, onChange }}
+        onChange={handleChange}
+        type={search.type}
+        value={search.value}
       />
     </div>
   );
