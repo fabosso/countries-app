@@ -2,7 +2,7 @@ import { useHistory } from "react-router";
 import { useGlobal } from "../../context/globalContext";
 import BackBtn from "../BackBtn/BackBtn";
 import styles from "./styles.module.scss";
-export const NotFound = (): JSX.Element => {
+export const NotFound = () => {
   const history = useHistory();
   const { setBorders } = useGlobal();
   const backHandler = () => {

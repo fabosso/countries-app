@@ -4,19 +4,9 @@ import { CountryCardLoader } from "./CountryCardLoader";
 import Skeleton from "react-loading-skeleton";
 import { useGlobal } from "../../context/globalContext";
 import { useState } from "react";
+import { CountryCardType } from "../../types/CountryCard.type";
 
-type CountryCardProps = {
-  country: {
-    alpha3Code: string;
-    capital: string;
-    flag: string;
-    name: string;
-    population: number;
-    region: string;
-  };
-};
-
-export const CountryCard = ({ country }: CountryCardProps) => {
+export const CountryCard = ({ country }: { country: CountryCardType }) => {
   const { updateLastVisited } = useGlobal();
   const [imageLoaded, setImageLoaded] = useState(false);
   const history = useHistory();

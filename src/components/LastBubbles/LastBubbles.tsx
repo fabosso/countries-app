@@ -3,7 +3,7 @@ import Bubble from "../Bubble/Bubble";
 import styles from "./styles.module.scss";
 
 const LastBubbles = () => {
-  const { lastVisited }: any = useGlobal();
+  const { lastVisited } = useGlobal();
 
   return (
     <div className={styles.container}>

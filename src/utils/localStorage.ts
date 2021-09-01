@@ -1,4 +1,4 @@
-export const getLocalValue = (name: string): any => {
+export const getLocalValue = (name: string) => {
   try {
     const serializedData = localStorage.getItem(name);
     if (serializedData === null) {
@@ -10,7 +10,7 @@ export const getLocalValue = (name: string): any => {
   }
 };
 
-export const setLocalValue = (name: string, value: any): void => {
+export const setLocalValue = (name: string, value: string | string[]): void => {
   try {
     const serializedData = JSON.stringify(value);
     localStorage.setItem(name, serializedData);
@@ -23,8 +23,8 @@ export const removeLocalValue = (name: string): void => {
   } catch {}
 };
 
-export const reformLastVisited = (nextCountry:string) : string[] => {
-  const _lastVisited = getLocalValue("lastVisited");
+export const reformLastVisited = (nextCountry: string): string[] => {
+  const _lastVisited: string[] | undefined = getLocalValue("lastVisited");
   if (!_lastVisited) return [nextCountry];
   if (_lastVisited.includes(nextCountry)) {
     const index = _lastVisited.indexOf(nextCountry);

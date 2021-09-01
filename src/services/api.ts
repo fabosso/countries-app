@@ -1,16 +1,16 @@
-import get  from "axios";
+import get from "axios";
 
 export const BASE_URL = "https://restcountries.eu/";
 export const API_URL = BASE_URL + "/rest/v2";
 
-export const getAll = async ():Promise<any[]> => {
+export const getAll = async () => {
   const { data } = await get(
     `${API_URL}/all?fields=flag;name;population;region;capital;alpha3Code`
   );
   return data;
 };
 
-export const getInfoByCode = async (code:string) => {
+export const getInfoByCode = async (code: string) => {
   if (!(code.length === 2 || code.length === 3)) {
     return null;
   }
@@ -20,7 +20,7 @@ export const getInfoByCode = async (code:string) => {
   return data;
 };
 
-export const getNameByCode = async (code:any) => {
+export const getNameByCode = async (code: string) => {
   if (!(code.length === 2 || code.length === 3)) {
     return null;
   }

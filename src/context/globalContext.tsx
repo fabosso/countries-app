@@ -6,21 +6,21 @@ import {
   removeLocalValue,
   reformLastVisited,
 } from "../utils/localStorage";
-
+import { ProviderProps } from "../types/ProviderProps.type";
 import { ThemeInterface } from "../interfaces/Theme.interface";
 import {
   updateLastVisitedType,
   useGlobalTypes,
 } from "../interfaces/Global.interface";
 
-const globalContext: any = createContext(null);
+const globalContext = createContext<useGlobalTypes>(null!);
 
-export function GlobalProvider(props: any) {
+export function GlobalProvider({ children }: ProviderProps) {
   const themeLocalStorage: string = getLocalValue("theme")
-    ? getLocalValue("theme")
+    ? getLocalValue("theme")!
     : "light";
   const lastVisitedLocalStorage: string[] = getLocalValue("lastVisited")
-    ? getLocalValue("lastVisited")
+    ? getLocalValue("lastVisited")!
     : [];
   const [lastVisited, setLastVisited] = useState(lastVisitedLocalStorage);
   const [theme, setTheme] = useState(themeLocalStorage);
@@ -59,10 +59,6 @@ export function GlobalProvider(props: any) {
     history.push(`/description/${code}`);
   };
 
-  useEffect(() => {
-    console.log(borders);
-  }, [borders]);
-
   return (
     <globalContext.Provider
       value={{
@@ -74,13 +70,14 @@ export function GlobalProvider(props: any) {
         setBorders,
         theme,
       }}
-      {...props}
-    />
+    >
+      {children}
+    </globalContext.Provider>
   );
 }
 
 export function useGlobal() {
-  const context: useGlobalTypes = useContext(globalContext);
+  const context: useGlobalTypes = useContext(globalContext)!;
   if (!context) {
     throw new Error("useGlobal call is not inside a GlobalProvider");
   }

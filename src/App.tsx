@@ -3,7 +3,7 @@ import { routes } from "./routes/routes";
 import { RouteInterface } from "./interfaces/Route.interface";
 import { GlobalProvider } from "./context/globalContext";
 
-function App(): JSX.Element {
+function App() {
   return (
     <GlobalProvider>
       <BrowserRouter>
@@ -13,19 +13,19 @@ function App(): JSX.Element {
               key={index}
               path={route.path}
               exact={route.exact}
-              render={(props) => {
+              render={() => {
                 if (route.provider) {
                   return (
                     <route.provider>
                       <route.layout>
-                        <route.component {...props} />
+                        <route.component />
                       </route.layout>
                     </route.provider>
                   );
                 } else {
                   return (
                     <route.layout>
-                      <route.component {...props} />
+                      <route.component />
                     </route.layout>
                   );
                 }

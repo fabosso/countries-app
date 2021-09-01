@@ -11,12 +11,12 @@ import { useGlobal } from "../../context/globalContext";
 import { palletes } from "../../utils/palletes";
 import { NotFound } from "../../components/NotFound/NotFound";
 
-export const Description = (): JSX.Element => {
-  const { setBorders, theme }: any = useGlobal();
+export const Description = () => {
+  const { setBorders, theme } = useGlobal();
   const {
     country: { flag, name },
     countryFound,
-  }: any = useDescription();
+  } = useDescription();
   const history = useHistory();
   const backHandler = (): void => {
     history.push("/");
@@ -36,7 +36,7 @@ export const Description = (): JSX.Element => {
             {!imageLoaded && <div className={styles.imgSkeleton}></div>}
             <img
               src={flag}
-              alt={name}
+              alt={name!}
               onLoad={handleImageLoad}
               style={imageLoaded ? { display: "initial" } : { display: "none" }}
             />

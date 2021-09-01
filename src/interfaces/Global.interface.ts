@@ -1,11 +1,12 @@
 import { History, LocationState } from "history";
+import { Dispatch, SetStateAction } from "react";
 
 export type BorderItem = {
   code: string;
   name: string;
 };
 
-type callBackFcn = (borders: BorderItem[]) => BorderItem[] | null;
+export type callBackFcn = (borders: BorderItem[]) => BorderItem[] | null;
 
 export type updateLastVisitedType = (
   code: string,
@@ -14,10 +15,10 @@ export type updateLastVisitedType = (
 
 export interface useGlobalTypes {
   darkModeHandler: () => void;
-  setTransitions: (transitions: boolean) => {};
+  setTransitions: Dispatch<SetStateAction<boolean>>;
   lastVisited: string[];
   updateLastVisited: updateLastVisitedType;
   borders: BorderItem[] | null;
-  setBorders: (callback: callBackFcn | null | never[]) => BorderItem[];
+  setBorders: any;
   theme: string;
 }

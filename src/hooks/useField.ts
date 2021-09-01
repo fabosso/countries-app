@@ -1,20 +1,15 @@
 import { useState } from "react";
-import { InputEvent } from "../types/EventTypes";
-type fieldParams = {
+import { useFieldType } from "../types/Search.type";
+
+export type fieldParams = {
   type: string;
-};
-type useFieldType = {
-  type: string;
-  value: any;
-  onChange: (event: InputEvent) => void;
-  resetSearchValue: () => void;
 };
 
 export const useField = ({ type }: fieldParams): useFieldType => {
-  const [value, setValue] = useState<string>("");
-  
-  const onChange = (event: any): void => {
-    setValue(event.target.value);
+  const [value, setValue] = useState("");
+
+  const handleChange = (text: string): void => {
+    setValue(text);
   };
   const resetSearchValue = (): void => {
     setValue("");
@@ -23,7 +18,7 @@ export const useField = ({ type }: fieldParams): useFieldType => {
   return {
     type,
     value,
-    onChange,
+    handleChange,
     resetSearchValue,
   };
 };

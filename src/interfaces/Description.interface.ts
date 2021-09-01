@@ -11,20 +11,21 @@ type LanguageType = {
   nativeName: string;
 };
 
-export type CountryType = {
-  currencies: CurrencyType[];
-  languages: LanguageType[];
+export type CountryDescType = {
+  currencies: CurrencyType[] | null;
+  languages: LanguageType[] | null;
   flag: string;
   name: string;
-  nativeName: string;
-  topLevelDomain: string[];
-  capital: string;
-  region: string;
-  subregion: string;
-  population: null | number;
-  borders: null | string[];
+  nativeName: string | null;
+  topLevelDomain: string[] | null;
+  capital: string | null;
+  region: string | null;
+  subregion: string | null;
+  population: number | null;
+  borders: string[] | null;
 };
 
 export interface useDescriptionTypes {
-  country: CountryType;
+  country: CountryDescType;
+  countryFound: boolean;
 }

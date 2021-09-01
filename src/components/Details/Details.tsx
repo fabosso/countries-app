@@ -1,10 +1,10 @@
 import { useDescription } from "../../context/descriptionContext";
 import Detail from "../Detail/Detail";
 import styles from "./styles.module.scss";
-import { CountryType } from "../../interfaces/Description.interface";
+import { CountryDescType } from "../../interfaces/Description.interface";
 
 const Details = () => {
-  const { country }: { country: CountryType } = useDescription();
+  const { country }: { country: CountryDescType } = useDescription();
 
   const details = [
     {
@@ -13,9 +13,7 @@ const Details = () => {
     },
     {
       title: "Population",
-      content: country.population
-        ? country.population.toLocaleString("en")
-        : null,
+      content: country.population?.toLocaleString("en"),
     },
     {
       title: "Region",
@@ -31,15 +29,15 @@ const Details = () => {
     },
     {
       title: "Top Level Domain",
-      content: country.topLevelDomain.join(", "),
+      content: country.topLevelDomain?.join(", "),
     },
     {
       title: "Currencies",
-      content: country.currencies.map((currency) => currency.name).join(", "),
+      content: country.currencies?.map((currency) => currency.name).join(", "),
     },
     {
       title: "Languages",
-      content: country.languages.map((language) => language.name).join(", "),
+      content: country.languages?.map((language) => language.name).join(", "),
     },
   ];
 

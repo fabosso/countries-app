@@ -2,11 +2,12 @@ import styles from "./styles.module.scss";
 import { useState } from "react";
 import { getKeyByValue } from "../../utils/getKeyByValue";
 import { ChevronDownOutline } from "react-ionicons";
+import { SelectType } from "../../types/Select.type";
 
 type FilterBySelectorProps = {
-  select: any;
-  resetSelectValue: any;
-  resetSearchValue: any;
+  select: SelectType;
+  resetSelectValue: () => void;
+  resetSearchValue: () => void;
 };
 
 export const FilterBySelector = ({
@@ -16,11 +17,10 @@ export const FilterBySelector = ({
 }: FilterBySelectorProps) => {
   const [clicked, setClicked] = useState(false);
   const { values: regions, selectedValue } = select;
-  const onClick = (event: any): void => {
-    select.onChange(event);
+  const handleClick = (regionName: string): void => {
+    select.onChangeFilter(regionName);
     setClicked(!clicked);
   };
-
   const resetValues = (): void => {
     resetSelectValue();
     setClicked(!clicked);
@@ -34,7 +34,6 @@ export const FilterBySelector = ({
         }}
       >
         <p>
-          {" "}
           {selectedValue
             ? getKeyByValue(regions, selectedValue)
             : "Filter by Region"}
@@ -46,11 +45,11 @@ export const FilterBySelector = ({
         style={{ display: clicked ? "block" : "none" }}
       >
         <ul className={styles.select_list__content}>
-          {Object.keys(regions).map((name: string, index: number) => (
+          {Object.keys(regions).map((name: string) => (
             <li
               className={styles.list}
-              key={index}
-              onClick={() => onClick({ target: { value: regions[name] } })}
+              key={name}
+              onClick={() => handleClick(regions[name])}
             >
               {name}
             </li>

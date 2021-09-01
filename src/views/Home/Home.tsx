@@ -7,10 +7,10 @@ import { useGrid } from "../../context/gridContext";
 import { palletes } from "../../utils/palletes";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { useGlobal } from "../../context/globalContext";
-export const Home = (): JSX.Element => {
-  const { countries, search, select, resetSearchValue, resetSelectValue }: any =
+export const Home = () => {
+  const { countries, search, select, resetSearchValue, resetSelectValue } =
     useGrid();
-  const { theme }: any = useGlobal();
+  const { theme } = useGlobal();
   return (
     <>
       <SkeletonTheme
@@ -19,7 +19,7 @@ export const Home = (): JSX.Element => {
       >
         <div className={styles.container}>
           <div className={styles.search_bar}>
-            <Search search={search} resetSelectValue={resetSelectValue} />
+            <Search search={search} />
             <FilterBySelector
               select={select}
               resetSearchValue={resetSearchValue}
